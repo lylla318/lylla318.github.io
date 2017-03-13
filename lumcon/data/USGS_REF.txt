@@ -1,0 +1,32 @@
+# ---------------------------------- WARNING ----------------------------------------
+# Some of the data that you have obtained from this U.S. Geological Survey database
+# may not have received Director's approval. Any such data values are qualified
+# as provisional and are subject to revision. Provisional data are released on the
+# condition that neither the USGS nor the United States Government may be held liable
+# for any damages resulting from its use.
+#
+# Additional info: https://help.waterdata.usgs.gov/policies/provisional-data-statement
+#
+# File-format description:  https://help.waterdata.usgs.gov/faq/about-tab-delimited-output
+# Automated-retrieval info: https://help.waterdata.usgs.gov/faq/automated-retrievals
+#
+# Contact:   gs-w_support_nwisweb@usgs.gov
+# retrieved: 2017-02-19 02:44:21 EST       (nadww01)
+#
+# Data for the following 1 site(s) are contained in this file
+#    USGS 07374525 Mississippi River at Belle Chasse, LA
+# -----------------------------------------------------------------------------------
+#
+# Data provided for site 07374525
+#            TS   parameter     Description
+#        167809       00060     Discharge, cubic feet per second
+#         62532       00065     Gage height, feet
+#         62538       72255     Mean water velocity for discharge computation, feet per second
+#         62539       63160     Stream water level elevation above NAVD 1988, in feet
+#         62540       63680     Turbidity, water, unfiltered, monochrome near infra-red LED light, 780-900 nm, detection angle 90 +-2.5 degrees, formazin nephelometric units (FNU)
+#
+# Data-value qualification codes included in this output:
+#        
+#     A  Approved for publication -- Processing and review completed.
+#     P  Provisional data subject to revision.
+#     e  Value has been estimated.
