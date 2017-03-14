@@ -1,0 +1,45 @@
+body{font-family: 'Source Code Pro',monospace !important;}
+.visBox{border: 1px solid black; margin-top:-10%; margin-left:15%;}
+.bx{height:350px;}
+.vText{margin-top:5%; margin-left:0%;}
+.info{margin-top:1%;margin-left:4%;font-family:'Source Code Pro',monospace; font-size:10px !important; width:700px;}
+a{text-decoration:none};
+.years{margin-left:5% !important; margin-top:5% !important;}
+.yrButton, .yrButton2{
+      font-family: 'Source Code Pro',monospace !important; 
+      margin-left:15% !important; 
+      width:80px; 
+      cursor:pointer;
+      text-align: center;
+      border-bottom-color:solid 1px transparent;
+}
+
+.variables{margin-left:-5% !important; margin-top:2%;}
+
+.txt{margin-left:3%;}
+.highlight{
+      background-color: #FFCCCC;
+}
+.clicked{
+      background-color: #FFCCCC;
+}
+h4 {
+    font-size: 15px !important;
+}
+.chart, .ratios {
+	margin-left:2%;
+}
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.focus circle {
+  fill: none;
+  stroke: blue;
+}
+
+.focus2 circle {
+  fill: none;
+  stroke: blue;
+}
