@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Syria D3.js Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="D3.js map of Syria and its districts.">
+    <meta charset="utf-8"> 
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+  </head>
+  <style>
+  .text-info {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 20px;
+    color:#080808;
+    margin-left:55% !important;
+  }
+  .attack-info{margin-left:-5%;}
+  .header {
+    margin-top: 3%;
+    margin-left: 3%;
+  } 
+  h1 {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 30px;
+    color:#080808;
+  }
+  h5 {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 15px;
+    color:#080808;
+  }
+  a { text-decoration: none; color:#3f007d; }
+  a:hover{text-decoration: none; color:#6a51a3;}
+  #viz{margin-left: -10%};
+
+  </style>
+
+
+  <body>
+  
+  <!-- Tooltip box. It appears when user hovers over the map.  -->
+  <div id="tooltip" class="hidden">
+    <div><strong>Governorate:</strong> <span id="governorate">100</span></div>
+    <div><strong>District:</strong> <span id="district">200</span></div>
+  </div>
+
+  <div class="header">
+    <h1>Russian Attacks in Syria, 2015 - 2016</h1>
+    <h5>Data collected from the <a href="syrianarchive.org">Syria Archive</a>. Map inspired by <a href="http://www.gary-pang.com/">Gary Pang</a>.</h5>
+  </div>
+
+  <!-- ADD D3.JS VISUALIZATION IN #VIZ.-->        
+  <div class='container-fluid'>
+      <div id="viz" class='col-md-8 text-center'></div>    
+      <div id="text-info" class="text-info">
+        <div class="date"></div>
+          <div id="attack-info">
+            <div><strong>Aleppo:</strong> <span id="aleppo">0</span></div>
+            <div><strong>Homs:</strong> <span id="homs">0</span></div>
+            <div><strong>Idlib:</strong> <span id="idlib">0</span></div>
+            <div><strong>Lattakia:</strong> <span id="lattakia">0</span></div>
+            <div><strong>Damascus:</strong> <span id="damascus">0</span></div>
+            <div><strong>Daraa:</strong> <span id="daraa">0</span></div>
+            <div><strong>Hama:</strong> <span id="hama">0</span></div>
+            <div><strong>Deir Ezzor:</strong> <span id="deir">0</span></div>
+            <div><strong>TOTAL:</strong> <span id="total">0</span></div>
+          </div>
+      </div>
+  </div>
+
+
+  <script src="javascript/jquery.v2.min.js"></script>  
+  <script src="javascript/bootstrap.min.js"></script>
+  <script src="javascript/d3.v3.min.js"></script>
+  <script src="javascript/d3.queue.v1.min.js"></script>
+  <script src="javascript/topojson.v1.min.js"></script>
+
+  <link rel="stylesheet" href="styles/tooltip.css">
+
+  <!-- D3.js code creates map of Syria. -->
+  <script src="javascript/russian_attacks_map.js"></script>
+  </body>
+</html>
