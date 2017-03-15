@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link href="styles/style.css" rel="stylesheet">
+    <link href="styles/font-awesome.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,800" rel="stylesheet"><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+    <link rel="stylesheet" type="text/css" href="styles/nouislider.min.css"> 
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+  </head>
+  <body>
+    <div class="header col-md-12">Global Collaborations Map</div>
+    <div class="radio-buttons col-md-12">
+      <div class="clearBoth"></div>
+        <input type="radio" name="editList" value="world"> <span class="radio-text">World Map</span>
+        <input type="radio" name="editList" value="us"> <span class="radio-text">USA Map</span>
+        <span class="glyphicon glyphicon-info-sign pull-right" 
+                      data-toggle="ttip"
+                      data-original-title="The keyword cloud presents the top 300 keywords extracted from the journal articles published by the Cornell faculty and researchers. <br> The size of each keyword in the cloud is directly proportional to the sum of the count of the faculty/researchers. <br> Bigger the keyword in size is, more the faculty members and researcher used the term in their papers."
+                      data-placement="bottom"
+                      data-html="true" 
+                      data-viewport="#site_wordcloud_vis">
+          </span>
+      <div class="clearBoth"></div>
+    </div>
+    <div id="map" class=""></div>
+    <div id="rh-panel"></div>
+    <div id="lh-panel" class="">
+        <div class="row">
+          <div class="">
+            <div class="panel-group" id="accordion">
+          
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                     <span class="start">Filter by:</span> Academic Unit
+                   </a>
+                 </h4>
+               </div>
+               <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body" id="academic-unit">
+                 <input type="text" class="form-control" id="deptInput" placeholder="Search">
+
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                   <span class="start">Filter by:</span> Subject Area
+                 </a>
+               </h4>
+             </div>
+             <div id="collapseFour" class="panel-collapse collapse">
+              <div class="panel-body" id="funagen">
+                 <input type="text" class="form-control" id="fundingInput" placeholder="Search">
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                  <span class="start">Filter by:</span> Active Year
+                </a>
+              </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+              <div class="panel-body" id="date">
+                <div id="range"></div>
+              </div>
+            </div>
+          </div>
+            <div style="margin-left:3%">
+            <h5><a onclick="checkAll()">Check All</a> | <a onclick="uncheckAll()">Uncheck All</a></h5>
+            </div>
+        </div> 
+        </div>
+
+      <div id="colorBar"></div>
+      <div id="colorButton">Change Color Scheme</div>
+    </div>
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script src="js/topojson.v1.min.js"></script>
+    <script src="http://d3js.org/queue.v1.min.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/list.js"></script>
+    <script src="js/nouislider.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.6/lodash.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+  </body>
+</html>

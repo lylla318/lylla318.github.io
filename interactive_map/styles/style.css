@@ -1,0 +1,288 @@
+html {
+  font-family: sans-serif;
+  overflow: hidden;
+}
+h3 {
+  font-size: 25px;
+}
+
+.header {
+  font-size: 35px;
+  margin-top: 5%;
+  margin-left: 0% !important;
+  font-family: Raleway;
+  font-weight: 800;
+}
+.radio-buttons {
+  margin-top: 1%;
+  margin-left: 20%;
+}
+
+
+input[type="text"], [type="date"], [type="number"] {
+    float:right;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+select {
+    float:right;
+    min-width:156px;
+    margin-right: 10px;
+}
+input[type="radio"] {
+    margin-left:10px;
+}
+.clearBoth {
+    clear:both;
+}
+.currencyFloat {
+    step=0.05;
+}
+
+#map {
+margin-left: 11%;
+margin-right: 0%;
+margin-top: 1%;
+margin-bottom: -5%;
+}
+.background {
+fill: none;
+pointer-events: all;
+}
+#countries, #states {
+fill: #cde;
+stroke: #fff;
+stroke-linejoin: round;
+stroke-linecap: round;
+}
+#countries .active, #states .active {
+fill: #89a;
+}
+#cities {
+stroke-width: 0;
+}
+.city {
+fill: #345;
+stroke: #fff;
+}
+pre.prettyprint {
+border: 1px solid #ccc;
+margin-bottom: 0;
+padding: 9.5px;
+}
+.country:hover{
+  stroke: #fff;
+  stroke-width: .7px;
+}
+#container {
+  margin:50px 5%;
+  padding:20px;
+  /*height:100%;
+  background-color: #cde7f0;
+  border:2px solid #d0d0d0;
+  border-radius: 5px;*/
+}
+.hidden { 
+  display: none; 
+}
+div.tooltip {
+  color: #222; 
+  background: #fff; 
+  padding: .5em; 
+  text-shadow: #f5f5f5 0 1px 0;
+  border-radius: 2px; 
+  box-shadow: 0px 0px 2px 0px #a6a6a6; 
+  opacity: 0.9; 
+  position: absolute;
+}
+li {
+  list-style: none;
+}
+.clicked{
+  fill: #9999CC !important;
+} a {
+  text-decoration: none;
+  color: black;
+} .button {
+  margin:100px 10%;
+  border: solid 1px black;
+  padding: 10px;
+  height: 25px;
+} .mini-submenu{
+  display:none;  
+  background-color: rgba(0, 0, 0, 0);  
+  border: 1px solid rgba(0, 0, 0, 0.9);
+  border-radius: 4px;
+  padding: 9px;  
+  /*position: relative;*/
+  width: 42px;
+
+}
+
+.mini-submenu:hover{
+  cursor: pointer;
+}
+
+.mini-submenu .icon-bar {
+  border-radius: 1px;
+  display: block;
+  height: 2px;
+  width: 22px;
+  margin-top: 3px;
+}
+
+.mini-submenu .icon-bar {
+  background-color: #000;
+}
+.header {
+  margin-left: 5%;
+  margin-top: 1%;
+}
+#country-selected {
+  margin-left: 2%;
+  margin-top: 2%;
+  padding: 0;
+  margin-bottom:0;
+}
+#rh-panel {
+  width: 250px;
+  height: 550px;
+  opacity: 0.7;
+  background: #222;
+  margin-top: -43%;
+  float: right;
+  overflow: none;
+  padding: 10px;
+  color: #ddd;
+}
+#rh-panel-header {
+  margin-left: 5px;
+  margin-top: -4%;
+  padding: 0px;
+  background: #222;
+  color: #ddd;
+}
+#rh-panel-header-closed {
+  margin-left: 15%;
+  padding: 5px;
+  background: #222;
+  color: #ddd;
+}
+#rh-panel-header hr {
+ margin-top: 5%;
+ border-style: none;
+ height: 2px;
+ width: 100%;
+ background-color: #ddd;
+}
+#rh-panel li {
+ font-family: serif;
+ text-decoration: underline;
+}
+
+#lh-panel {
+  width: 250px;
+  height: 500px;
+  margin-top: -43%;
+  float: left;
+  overflow: hidden;
+  padding: 10px;
+  color: #ddd;
+}
+#lh-panel-header {
+  padding: 5px;
+  color: #ddd;
+}
+#article-info {
+  padding: 10px;
+  margin-left: 10px;
+  background: #222;
+  color: #ddd;
+}
+#article-info:hover{
+  /*background: #787878;*/
+}
+#article-info a {
+  font-style: italic;
+  color: white;
+}
+#article-info li {
+  list-style: none;
+}
+.toggle-icon{
+  float:left;
+  padding-right:10px;
+  cursor:pointer;
+}
+#count {
+  float: right;
+}
+#colorBar {
+  margin-top: 10%;
+  margin-left: 0%;
+}
+#colorButton {
+  width: 150px !important;
+  height: 45px ;
+  margin-left: 10% !important;
+  border: 2px solid #ddd !important;
+  font-size: 12px !important;
+  padding-top: 10px !important;
+  text-align: center !important;
+  color: black !important;
+  cursor: pointer !important;
+}
+#colorButton:hover{
+  border: 2px solid black !important;
+}
+
+.row{
+  margin-top: 1%;
+  margin-left: 30%;
+  max-width: 100%;
+}
+.panel-group{
+  padding-left: 5%;
+}
+
+.panel-body{
+  padding-top: 2px;
+  padding-bottom: 2px;
+  max-height: 300px;
+  overflow-y: scroll;
+  min-height: 100px;
+}
+
+.start{
+  color: gray;
+}
+
+#range{
+  margin-top: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.noUi-connect{
+  background: #d3d3d3;
+}
+
+.noUi-value-large{
+  font-size: 10pt;
+  margin-top: 5px;
+}
+
+.col-md-9{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.radio-text {
+  padding-left: 2px;
+}
+
+/*.panel-heading {
+  height: 30px !important;
+}*/
+
+
