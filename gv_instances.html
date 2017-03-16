@@ -31,7 +31,7 @@
     
     <div class="col-md-12" style="margin-top:-5.5%; margin-left:2.5%">
         <span class="filter-country"> Filter by country. <br></span>
-        <select class="chosen-select" multiple style="width:350px; border-radius:20px;">
+        <select class="chosen-select selected" multiple style="width:350px; border-radius:20px;">
                   <option value="USA">United States</option>
                   <option value="United Kingdom">United Kingdom</option>
                   <option value="Afghanistan">Afghanistan</option>
@@ -453,6 +453,7 @@ $(".chosen-select").on("change",function(d){
 });
 
 $(".reset").on("click",function(){
+  $(".selected").val('').trigger('chosen:updated');
   d3.selectAll(".rect").remove();
   d3.selectAll(".text").remove();
   d3.selectAll(".line").remove();

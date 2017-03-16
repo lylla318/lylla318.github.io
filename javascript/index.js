@@ -4,12 +4,12 @@ $(document).ready(function(){
   $(".Portfolio").click(function (){
     $('html, body').animate({ scrollTop: $(".visualizations-section").offset().top-130 }, 2000);
   });
-  $(".Blog").click(function (){
-    $('html, body').animate({ scrollTop: $(".blog-section").offset().top-130 }, 2000);
-  });
-  $(".Poetry").click(function (){
-    $('html, body').animate({ scrollTop: $(".poetry-section").offset().top-130 }, 2000); 
-  });
+  // $(".Blog").click(function (){
+  //   $('html, body').animate({ scrollTop: $(".blog-section").offset().top-130 }, 2000);
+  // });
+  // $(".Poetry").click(function (){
+  //   $('html, body').animate({ scrollTop: $(".poetry-section").offset().top-130 }, 2000); 
+  // });
   $(".About").click(function (){
     $('html, body').animate({ scrollTop: $(".about-section").offset().top-130 }, 2000);
   });
