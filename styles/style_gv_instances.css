@@ -1,0 +1,84 @@
+@font-face{
+    font-family: EffraBold;
+    src: url('fonts/effra_std_bd.woff')
+}
+@font-face{
+    font-family: "EffraLite";
+    src: url('fonts/effra_std_lt.woff')
+}
+@font-face{
+    font-family: "vcr";
+    src: url('fonts/vcr.ttf')
+}
+body {
+
+	overflow: hidden;
+
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+         -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;
+}
+
+h3 {
+	font-family: vcr !important;
+	margin-left: 0.5% !important;
+}
+
+p {
+	line-height: 1;
+}
+
+.rect {
+	stroke: #ddd;
+	padding-right: 3px;
+	padding-left: 3px;
+	cursor: pointer;
+}
+
+.blurb {
+	margin-left:-0.5%;
+	margin-bottom:-5%;
+	margin-top:0.5%;
+	width:50%;
+	font-family: EffraLite !important;
+	font-size:15px;
+}
+
+.filter-country {
+	font-family: EffraLite !important;
+	font-size:15px;
+}
+
+.d3-tip {
+  line-height: 1;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+  font-size:10px;
+  font-family:sans-serif;
+  max-width:300px !important;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-family: sans-serif;
+  font-size: 5px;
+/*  width: 100%;
+*/  max-width:200px !important;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  top: 100%;
+  left: 45%;
+}

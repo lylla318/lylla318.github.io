@@ -1,7 +1,7 @@
 
 // ["Home","Visualizations","Blog","Poetry","About","Contact"]
 $(document).ready(function(){
-  $(".Visualizations").click(function (){
+  $(".Portfolio").click(function (){
     $('html, body').animate({ scrollTop: $(".visualizations-section").offset().top-130 }, 2000);
   });
   $(".Blog").click(function (){
@@ -87,7 +87,7 @@ svg.selectAll(".point")
         .style("cursor","pointer")
         .attr("transform", function(d) { return "translate(" + d + ")"; });r
 
-var menuItems = ["Home","Visualizations","Blog","Poetry","About","Contact"]
+var menuItems = ["Home","Portfolio","Blog","Poetry","About","Contact"]
 
 for (var i=1 ; i<circs.length-1 ;i++) {
     var x = circs[i][0] - 2;
@@ -120,7 +120,7 @@ function pointToClass(d){
     if(d[0] == 5){
         return "About";
     } else if (d[0] == 55) {
-        return "Visualizations";
+        return "Portfolio";
     } else if (d[0] == 105) {
         return "Poetry";
     } else if (d[0] == 155) {

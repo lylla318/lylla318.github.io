@@ -113,7 +113,7 @@ a {
 .menu {
 	float:right;
 	display: inline-block;
-	margin-left:-7% !important;
+	/*margin-left:-7% !important;*/
 }
 .line {
   fill: none;

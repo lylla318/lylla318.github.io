@@ -106,7 +106,7 @@ $(".chosen-select-year").on("change",function(d){
 $(".reset").on("click",function(){
   d3.selectAll("svg > *").remove();
   $(".selected").empty();
-;  drawRadial(originalData);
+  drawRadial(originalData);
 })
 
 function drawRadial(data) {
