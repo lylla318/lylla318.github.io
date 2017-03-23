@@ -91,6 +91,38 @@ $(document).ready(function () {
     recordData = records;
   });
 
+
+  $.getJSON('http://query.yahooapis.com/v1/public/yql?q=select%20%2a%20from%20yahoo.finance.quotes%20WHERE%20symbol%3D%27WRC%27&format=json&diagnostics=true&env=store://datatables.org/alltableswithkeys&callback', function(data) {
+    //data is the JSON string
+    console.log(data);
+  });
+
+  $.getJSON('http://elr37-dev.library.cornell.edu/qa/show/linked_data/dbpedia/Daz+Dillinger', function(data) {
+    //data is the JSON string
+    console.log(data);
+  });
+
+  // $.ajax({
+  //   url: "http://elr37-dev.library.cornell.edu/qa/show/linked_data/dbpedia/Daz+Dillinger",
+ 
+  //   // The name of the callback parameter, as specified by the YQL service
+  //   jsonp: "callback",
+ 
+  //   // Tell jQuery we're expecting JSONP
+  //   dataType: "jsonp",
+ 
+  //   // Tell YQL what we want and that we want JSON
+  //   data: {
+  //       q: "select title,abstract,url from search.news where query=\"cat\"",
+  //       format: "json"
+  //   },
+ 
+  //   // Work with the response
+  //   success: function( response ) {
+  //       console.log( response ); // server response
+  //   }
+  // });
+
 });
 
 $(".chosen-select-genre").on("change",function(d){
