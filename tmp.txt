@@ -1,0 +1,311 @@
+/* Ratios of Additional Data */
+
+
+(function() {
+
+dataByYear3 = {}
+
+// set the dimensions and margins of the graph
+var margin = {top: 20, right: 40, bottom: 30, left: 50},
+    width = 700 - margin.left - margin.right,
+    height = 350 - margin.top - margin.bottom;
+
+var parseTime3 = d3.timeParse("%Y-%m-%d"),
+    bisectDate = d3.bisector(function(d) { return d.date; }).left,
+    dataByYear3 = {}, oldData;
+
+// set the ranges
+var x2 = d3.scaleTime().range([0, width]);
+var y03 = d3.scaleLinear().range([height,0]);
+
+
+
+// define the 1st line
+var valueline3 = d3.line()
+    //.curve(d3.curveCatmullRom.alpha(0.5))
+    .x(function(d) { return x2(d.date); })
+    .y(function(d) { return y03(parseFloat(d.nitrogen)); });
+
+
+var svg3 = d3.select(".chart2").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+$(document).ready(function(){
+  $(".yrButton2").on("mouseover",function(){
+    if(!$(this).hasClass("clicked")) $(this).addClass("highlight")
+  })
+  $(".yrButton2").on("mouseout",function(){
+    if(!$(this).hasClass("clicked")) $(this).removeClass("highlight");
+  })
+  $(".yrButton2").on("click",function(d){
+    $( ".yrButton2" ).each(function( index ) {
+      if($(this).hasClass("highlight")) $(this).removeClass("highlight");
+      if($(this).hasClass("clicked")) $(this).removeClass("clicked");
+    });
+    $(this).addClass("clicked");
+    tmp = ($(this).text()).substring(($(this).text()).length-2,($(this).text()).length);
+    updateYear2(tmp,oldData);
+  });
+})
+
+
+d3.tsv("data/extended_gage_data.tsv", function(error, data) {
+  if (error) throw error;
+
+  //console.log(data);
+
+  oldData = data;
+  var i = 0;
+  for(let entry of data) {
+    var datetime = entry.datetime, yr;
+    datetime = datetime.split(" ");
+    datetime = datetime[0].split("-");
+    yr = datetime[0];
+    i++;
+    if(dataByYear3[yr]) {
+      dataByYear3[yr].push(entry);
+    } else {
+      dataByYear3[yr]=[entry];
+    }
+  }
+
+  data = dataByYear3["2017"];
+  tmp = [];
+  console.log("DATA: ",data);
+
+  for(let entry of data) {
+    //data.pH != null && data.salinity != null && data.pH != null && data.nitrogen != null &&
+    if(entry.nitrogen) {
+      tmp.push(entry);
+    }
+  }
+
+  data = tmp;
+
+  y03.domain([0, d3.max(data, function(d) {return Math.max(d.nitrogen);})]);
+  console.log(data);
+
+
+  // format the data
+  data.forEach(function(d,i) {
+    var tmp = ((d.datetime).split(" "))[0];
+    d.date = parseTime3(tmp);
+    d.discharge = +d.discharge;
+    d.gauge_height = +d.gauge_height;
+    d.water_velocity = +d.water_velocity;
+    d.temperature = +d.temperature;
+    d.conductance = +d.conductance;
+    d.salinity = +d.salinity;
+    d.pH = +d.pH;
+    d.turbidity = +d.turbidity;
+    d.dissolved_oxygen = +d.dissolved_oxygen;
+    d.water_elevation = +d.water_elevation;
+    d.nitrogen = +d.nitrogen;
+    //d.ratio = +(parseFloat(d.discharge / d.gauge_height));
+  });
+
+  // Scale the range of the data
+  x2.domain(d3.extent(data, function(d) { return d.date; }));
+  y03.domain([0, d3.max(data, function(d) {return Math.max(d.pH);})]);
+
+  // Add the valueline path.
+  svg3.append("path")
+    .attr("id","valueline2")
+    .data([data])
+    .style("stroke", "#225ea8")
+    .style("stroke-width","2")
+    .attr("class", "line")
+    .attr("fill", "none")
+    .attr("d", valueline3);
+
+  // Add the X Axis
+  svg3.append("g")
+    .attr("id","axis2")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x2));
+
+  // Add the Y0 Axis
+  svg3.append("g")
+    .attr("id","axis2")
+    .attr("class", "axisSteelBlue")
+    .call(d3.axisLeft(y03))
+      .append("text")
+        .attr("fill", "#000")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", "0.71em")
+        .attr("text-anchor", "end")
+        .text("Nitrogen");
+
+  // var focus2 = svg3.append("g")
+  //     .attr("class", "focus")
+  //     .style("display", "none");
+
+  // focus2.append("circle")
+  //     .attr("class","circle")
+  //     .attr("r", 4.5);
+
+  // focus2.append("text")
+  //     .attr("class","focus-text")
+  //     .attr("x", 9)
+  //     .attr("dy", ".35em");
+
+
+
+  var vertical2 = d3.select(".chart2")
+    .append("div")
+    .attr("id","vertical2")
+    .attr("class", "remove")
+    .style("position", "absolute")
+    .style("z-index", "19")
+    .style("width", "1px")
+    .style("height", "310px")
+    .style("top", "10px")
+    .style("bottom", "30px")
+    .style("left", "0px")
+    .style("background", "black");
+
+  d3.select(".chart2")
+    .on("mousemove", function(data){  
+      var mousex = d3.mouse(this);
+      mousex = mousex[0] + 5;
+      vertical2.style("left", mousex + "px" )})
+
+    .on("mouseover", function(){  
+       mousex = d3.mouse(this);
+       mousex = mousex[0] + 5;
+       vertical2.style("left", mousex + "px")});
+
+  // svg3.append("rect")
+  //     .attr("class", "overlay")
+  //     .attr("width", width)
+  //     .attr("height", height)
+  //     .on("mouseover", function() { focus2.style("display", null); })
+  //     .on("mouseout", function() { focus2.style("display", "none"); })
+  //     .on("mousemove", function(){
+  //       var x0 = x2.invert(d3.mouse(this)[0]),
+  //       i = bisectDate(data, x0, 1),
+  //       d0 = data[i - 1],
+  //       d1 = data[i],
+  //       d = x0 - d0.date > d1.date - x0 ? d1 : d0;
+  //       //focus2.attr("transform", "translate(" + x2(d.date) + "," + y02(d.ratio) + ")");
+  //       //focus2.select("text").text(Math.round(d.ratio * 100) / 100);
+  //     });
+
+
+});
+
+function updateYear3(yr,oldData){
+  d3.selectAll("#valueline2").remove();
+  d3.selectAll("#axis2").remove();
+  d3.selectAll("#vertical2").remove();
+
+  if(yr === "ll") {
+    data = oldData;
+  } else {
+    data = dataByYear3[yr];
+  }
+
+  // Format the data
+  data.forEach(function(d) {
+    d.date = parseTime(d.datetime);
+    d.discharge = +d.discharge;
+    d.gauge_height = +d.gauge_height;
+    d.ratio = +(parseFloat(d.discharge / d.gauge_height)); 
+  });
+
+  // Scale the range of the data
+  x2.domain(d3.extent(data, function(d) { return d.date; }));
+  y02.domain([0, d3.max(data, function(d) {return Math.max(d.ratio);})]);
+
+  // Add the valueline path.
+  svg2.append("path")
+    .attr("id","valueline2")
+    .data([data])
+    .style("stroke", "#225ea8")
+    .style("stroke-width","2")
+    .attr("class", "line")
+    .attr("fill", "none")
+    .attr("d", valueline2);
+
+  // Add the X Axis
+  svg2.append("g")
+    .attr("id","axis2")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x2));
+
+  // Add the Y0 Axis
+  svg2.append("g")
+    .attr("id","axis2")
+    .attr("class", "axisSteelBlue")
+    .call(d3.axisLeft(y02))
+      .append("text")
+        .attr("fill", "#000")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", "0.71em")
+        .attr("text-anchor", "end")
+        .text("Discharge / Gage Height (feet^2 / s)");
+
+    var focus2 = svg2.append("g")
+      .attr("class", "focus")
+      .style("display", "none");
+
+  focus2.append("circle")
+      .attr("class","circle")
+      .attr("r", 4.5);
+
+  focus2.append("text")
+      .attr("class","focus-text")
+      .attr("x", 9)
+      .attr("dy", ".35em");
+
+  var vertical2 = d3.select(".ratios")
+    .append("div")
+    .attr("id","vertical2")
+    .attr("class", "remove")
+    .style("position", "absolute")
+    .style("z-index", "19")
+    .style("width", "1px")
+    .style("height", "310px")
+    .style("top", "10px")
+    .style("bottom", "30px")
+    .style("left", "0px")
+    .style("background", "black");
+
+  d3.select(".ratios")
+    .on("mousemove", function(data){  
+      var mousex = d3.mouse(this);
+      mousex = mousex[0] + 5;
+      vertical2.style("left", mousex + "px" )})
+
+    .on("mouseover", function(){  
+       mousex = d3.mouse(this);
+       mousex = mousex[0] + 5;
+       vertical2.style("left", mousex + "px")});
+
+  svg2.append("rect")
+      .attr("class", "overlay")
+      .attr("width", width)
+      .attr("height", height)
+      .on("mouseover", function() { focus2.style("display", null); })
+      .on("mouseout", function() { focus2.style("display", "none"); })
+      .on("mousemove", function(){
+        var x0 = x2.invert(d3.mouse(this)[0]),
+        i = bisectDate(data, x0, 1),
+        d0 = data[i - 1],
+        d1 = data[i],
+        d = x0 - d0.date > d1.date - x0 ? d1 : d0;
+        focus2.attr("transform", "translate(" + x2(d.date) + "," + y02(d.ratio) + ")");
+        focus2.select("text").text(Math.round(d.ratio * 100) / 100);
+      });
+
+}
+
+
+
+})();

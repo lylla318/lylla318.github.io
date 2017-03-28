@@ -4,56 +4,124 @@
 <body>
 
       <div class="col-md-12" style="margin-top:2%; margin-left:2%; margin-bottom:5%">
-            <h1 style="font-family:Raleway !important; font-weight:400; color:black; font-size:40px !important; margin-left:2%">Analyzing Mississippi River Flow Data</h1>
+            <h1 style="font-family:Raleway !important; font-weight:400; color:black; font-size:40px !important; margin-left:4%">Analyzing Mississippi River Flow Data</h1>
       </div>
 
-      <div class="col-md-7 chart" style=""></div>
-      <div class="col-md-2 years" style="margin-top:2%">
-            <div class="yrButton"><span class="txt">2008</div>
-            <div class="yrButton"><span class="txt">2009</span></div>
-            <div class="yrButton"><span class="txt">2010</span></div>
-            <div class="yrButton"><span class="txt">2011</span></div>
-            <div class="yrButton"><span class="txt">2012</span></div>
-            <div class="yrButton"><span class="txt">2013</span></div>
-            <div class="yrButton"><span class="txt">2014</span></div>
-            <div class="yrButton"><span class="txt">2015</span></div>
-            <div class="yrButton"><span class="txt">2016</span></div>
-            <div class="yrButton"><span class="txt">2017</span></div>
-            <div class="yrButton"><span class="txt">All</span></div>
+      <div class="col-md-12 sub-header" style=" margin-left: 6%">
+            <h3>Gage-Height And Discharge By Year</h3>
       </div>
-      <div class="col-md-3 variables"></div>
+      <div class="col-md-12 years" style=" margin-left: 6%">
+            Select Year(s):<br>
+            <select class="chosen-select-graph1-year" single style="width:350px; border-radius:20px;">
+                  <option value="2008">2008</option>
+                  <option value="2009">2009</option>
+                  <option value="2010">2010</option>
+                  <option value="2011">2011</option>
+                  <option value="2012">2012</option>
+                  <option value="2013">2013</option>
+                  <option value="2014">2014</option>
+                  <option value="2015">2015</option>
+                  <option value="2016">2016</option>
+                  <option value="2017">2017</option>
+                  <option value="All">All</option>
+            </select>
+
+      </div>
+      <div class="col-md-6 chart" style=""></div>
+      
+      <div class="col-md-6"></div>
+
+      
+
+      <div class="col-md-12 sub-header" style=" margin-left: 6% ; margin-top: 3%">
+            <h3>Discharge / Gage-Height Ratio By Year</h3>
+      </div>
+      <div class="col-md-12" style=" margin-left:6%;margin-bottom:0%">
+            Select Year(s):<br>
+            <select class="chosen-select-graph2-year" multiple style="width:350px; border-radius:20px;">
+                  <option value="2008">2008</option>
+                  <option value="2009">2009</option>
+                  <option value="2010">2010</option>
+                  <option value="2011">2011</option>
+                  <option value="2012">2012</option>
+                  <option value="2013">2013</option>
+                  <option value="2014">2014</option>
+                  <option value="2015">2015</option>
+                  <option value="2016">2016</option>
+                  <option value="2017">2017</option>
+                  <option value="All">All</option>
+            </select>
+      </div>
+
+      <div class="col-md-6 ratios" style="margin-top:0%"></div>
+      <div class="col-md-6 sth"></div>
+
+
+
+      <div class="col-md-12 sub-header" style=" margin-left: 6% ; margin-top: 3%">
+            <h3>Extended Gage Data: Baton Rouge</h3>
+      </div>
+      <div class="col-md-12" style=" margin-left:6%;margin-bottom:0%">
+            <span style="margin-right:10%">Select Year(s):</span> <span>Select Field:</span> <br>
+            <select class="chosen-select-graph3-year" single style="width:350px; border-radius:20px;">
+                  <option value="2008">2008</option>
+                  <option value="2009">2009</option>
+                  <option value="2010">2010</option>
+                  <option value="2011">2011</option>
+                  <option value="2012">2012</option>
+                  <option value="2013">2013</option>
+                  <option value="2014">2014</option>
+                  <option value="2015">2015</option>
+                  <option value="2016">2016</option>
+                  <option value="2017">2017</option>
+                  <!-- <option value="All">All</option> -->
+            </select>
+            <div style="margin-left:2.5%; display:inline;">
+                  <select class="chosen-select-graph3-data" id="chart2_val" single style="width:350px; border-radius:20px;">
+                        <option value="discharge">Discharge</option>
+                        <option value="gage_height">Gage Height</option>
+                        <option value="water_velocity">Water Velocity</option>
+                        <option value="temperature">Temperature</option>
+                        <option value="conductance">Conductance</option>
+                        <option value="salinity">Salinity</option>
+                        <option value="pH">pH Level</option>
+                        <option value="turbidity">Turbidity</option>
+                        <option value="dissolved_oxygen">Dissolved Oxygen</option>
+                        <option value="water_elevation">Water Elevation</option>
+                        <option value="nitrogen">Nitrogen</option>
+                  </select>
+            </div>
+      </div>
+
+      <div class="col-md-6 chart2" style="margin-left:2%"></div>
+
+
 
       <div class="col-md-6 info" >Data specificities: discharge in cubic feet per second; gage height in feet; turbidity, water, unfiltered, monochrome near infra-red LED light, 780-900 nm, detection angle 90 +-2.5 degrees, formazin nephelometric units (FNU). Data collected from USGS Location 07374525 Mississippi River at Belle Chasse, LA. More information available at the <a href="waterdata.usgs.gov">usgs.gov</a> site. Visualization inspiration and support from the lab of Dr. Alex Kolker at the <a href="https://lumcon.edu">Louisiana Universities Marine Consortium</a> [LUMCON].</div>
 
-      <div class="col-md-6"></div>
-
-      <div class="col-md-7 ratios" style="margin-top:5%"></div>
-      <div class="col-md-2 years" style="margin-top:5%">
-            <div class="yrButton2"><span class="txt">2008</div>
-            <div class="yrButton2"><span class="txt">2009</span></div>
-            <div class="yrButton2"><span class="txt">2010</span></div>
-            <div class="yrButton2"><span class="txt">2011</span></div>
-            <div class="yrButton2"><span class="txt">2012</span></div>
-            <div class="yrButton2"><span class="txt">2013</span></div>
-            <div class="yrButton2"><span class="txt">2014</span></div>
-            <div class="yrButton2"><span class="txt">2015</span></div>
-            <div class="yrButton2"><span class="txt">2016</span></div>
-            <div class="yrButton2"><span class="txt">2017</span></div>
-            <div class="yrButton2"><span class="txt">All</span></div>
-      </div>
+      
 
 
 <link href="https://fonts.googleapis.com/css?family=Raleway:400,800,700" rel="stylesheet"> 
 <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
 <link rel="stylesheet" href="styles/bootstrap.min.css">
 <link rel="stylesheet" href="styles/style_lumcon.css">
+<link rel="stylesheet" href="styles/chosen.min.css"></script>  
 <script src="javascript/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="javascript/chosen.jquery.min.js"></script>
 <script src="javascript/d3.v4.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="javascript/lumcon.js" type="text/javascript" charset="utf-8"></script>
 <script src="javascript/ratios.js" type="text/javascript" charset="utf-8"></script>
 <script src="javascript/d3-tip.js"></script>
 <script src="javascript/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 
+
+            <!-- Select Data:
+            <select class="chosen-select-graph1-data" multiple style="width:350px; border-radius:20px;">
+                  <option value="discharge">Discharge</option>
+                  <option value="gage_height">Gage Height</option>
+                  <option value="water_velocity">Water Velocity</option>
+            </select> -->
 
 </body>
 </html>

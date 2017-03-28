@@ -1,6 +1,15 @@
-var dataByYear = {};
+$(document).ready(function () {
+  $(".chosen-select-graph1-year").chosen({width: "15%"}); 
+});
+
+var dataByYear = {}, dataByYear3 = {};
 
 (function() {
+
+$(".chosen-select-graph1-year").on("change",function(d){
+  var selected = $(".chosen-select-graph1-year").val();
+  updateYear(selected);
+});
 
 // set the dimensions and margins of the graph
 var margin = {top: 20, right: 40, bottom: 30, left: 50},
@@ -43,24 +52,6 @@ var svg = d3.select(".chart").append("svg")
   .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
-
-$(document).ready(function(){
-  $(".yrButton").on("mouseover",function(){
-    if(!$(this).hasClass("clicked")) $(this).addClass("highlight")
-  })
-  $(".yrButton").on("mouseout",function(){
-    if(!$(this).hasClass("clicked")) $(this).removeClass("highlight");
-  })
-  $(".yrButton").on("click",function(d){
-    $( ".yrButton" ).each(function( index ) {
-      if($(this).hasClass("highlight")) $(this).removeClass("highlight");
-      if($(this).hasClass("clicked")) $(this).removeClass("clicked");
-    });
-    $(this).addClass("clicked");
-    tmp = ($(this).text()).substring(($(this).text()).length-2,($(this).text()).length);
-    updateYear(tmp)
-  });
-})
 
 // Get the data
 //d3.csv("data/msr_gauge_data.csv", function(error, data) {
@@ -240,9 +231,10 @@ function updateYear(yr){
   d3.selectAll(".focus").remove()
   d3.selectAll(".circle").remove()
   
-  if(yr === "ll") {
+  if(yr === "All") {
     data = oldData;
   } else {
+    yr = yr.substring(yr.length, yr.length-2);
     data = dataByYear[yr];
   }
 
@@ -432,6 +424,39 @@ function parseData(data) {
 })();
 
 
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+
+
+
+
 /* Ratios of Gage Height / Discharge */
 
 
@@ -464,24 +489,16 @@ var svg2 = d3.select(".ratios").append("svg")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-$(document).ready(function(){
-  $(".yrButton2").on("mouseover",function(){
-    if(!$(this).hasClass("clicked")) $(this).addClass("highlight")
-  })
-  $(".yrButton2").on("mouseout",function(){
-    if(!$(this).hasClass("clicked")) $(this).removeClass("highlight");
-  })
-  $(".yrButton2").on("click",function(d){
-    $( ".yrButton2" ).each(function( index ) {
-      if($(this).hasClass("highlight")) $(this).removeClass("highlight");
-      if($(this).hasClass("clicked")) $(this).removeClass("clicked");
-    });
-    $(this).addClass("clicked");
-    tmp = ($(this).text()).substring(($(this).text()).length-2,($(this).text()).length);
-    updateYear2(tmp,oldData);
-  });
-})
 
+$(document).ready(function () {
+  $(".chosen-select-graph2-year").chosen({width: "15%"}); 
+});
+
+
+$(".chosen-select-graph2-year").on("change",function(d){
+  var selected = $(".chosen-select-graph2-year").val();
+  updateYear2(selected,oldData);
+});
 
 d3.csv("data/averages.csv", function(error, data) {
   if (error) throw error;
@@ -599,9 +616,6 @@ d3.csv("data/averages.csv", function(error, data) {
         focus2.select("text").text(Math.round(d.ratio * 100) / 100);
       });
 
-
-
-
 });
 
 function updateYear2(yr,oldData){
@@ -609,9 +623,10 @@ function updateYear2(yr,oldData){
   d3.selectAll("#axis2").remove();
   d3.selectAll("#vertical2").remove();
 
-  if(yr === "ll") {
+  if(yr === "All") {
     data = oldData;
   } else {
+    yr = yr.substring(yr.length, yr.length-2);
     data = dataByYear[yr];
   }
 
@@ -656,7 +671,7 @@ function updateYear2(yr,oldData){
         .attr("text-anchor", "end")
         .text("Discharge / Gage Height (feet^2 / s)");
 
-    var focus2 = svg2.append("g")
+  var focus2 = svg2.append("g")
       .attr("class", "focus")
       .style("display", "none");
 
@@ -714,6 +729,389 @@ function updateYear2(yr,oldData){
 
 
 })();
+
+
+
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////3333333333333///////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+
+
+/* Ratios of Additional Data */
+
+
+(function() {
+
+// set the dimensions and margins of the graph
+var margin = {top: 20, right: 40, bottom: 30, left: 50},
+    width = 700 - margin.left - margin.right,
+    height = 350 - margin.top - margin.bottom;
+
+var parseTime3 = d3.timeParse("%Y-%m-%d"),
+    bisectDate = d3.bisector(function(d) { return d.date; }).left,
+    oldData, currentField = "nitrogen", currentYear = "2017" ;currentData = [];
+
+// set the ranges
+var x2 = d3.scaleTime().range([0, width]);
+var y03 = d3.scaleLinear().range([height,0]);
+
+// define the 1st line
+var valueline3 = d3.line()
+    .curve(d3.curveCatmullRom.alpha(0.5))
+    .x(function(d) { return x2(d.date); })
+    .y(function(d) { return y03(parseFloat(d.nitrogen)); });
+
+var svg3 = d3.select(".chart2").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+$(document).ready(function () {
+  $(".chosen-select-graph3-year").chosen({width: "15%"}); 
+  $(".chosen-select-graph3-data").chosen({width: "15%"}); 
+});
+
+$(".chosen-select-graph3-year").on("change",function(d){
+  var selected = $(".chosen-select-graph3-year").val();
+  updateGraph3(selected,oldData,true,dataByYear3);
+});
+
+$(".chosen-select-graph3-data").on("change",function(d){
+  var selected = $(".chosen-select-graph3-data").val();
+  updateGraph3(selected,oldData,false);
+});
+
+document.getElementById("chart2_val").value = '<?=$this->water_elevation?>';
+$(".chosen-select-graph3-data").trigger('chosen:updated');
+
+
+d3.tsv("data/extended_gage_data.tsv", function(error, data) {
+  if (error) throw error;
+
+  //console.log(data);
+
+  oldData = data;
+  var i = 0;
+  for(let entry of data) {
+    var datetime = entry.datetime, yr;
+    datetime = datetime.split(" ");
+    datetime = datetime[0].split("-");
+    yr = datetime[0];
+    i++;
+    if(dataByYear3[yr]) {
+      dataByYear3[yr].push(entry);
+    } else {
+      dataByYear3[yr]=[entry];
+    }
+  }
+
+  data = dataByYear3["2017"];
+  currentData = data;
+  tmp = [];
+  //console.log("DATA: ",data);
+
+  for(let entry of data) {
+    //data.pH != null && data.salinity != null && data.pH != null && data.nitrogen != null &&
+    if(entry.nitrogen) {
+      tmp.push(entry);
+    }
+  }
+
+  data = tmp;
+
+  // format the data
+  data.forEach(function(d,i) {
+    var tmp = ((d.datetime).split(" "))[0];
+    d.date = parseTime3(tmp);
+    d.discharge = +d.discharge;
+    d.gauge_height = +d.gauge_height;
+    d.water_velocity = +d.water_velocity;
+    d.temperature = +d.temperature;
+    d.conductance = +d.conductance;
+    d.salinity = +d.salinity;
+    d.pH = +d.pH;
+    d.turbidity = +d.turbidity;
+    d.dissolved_oxygen = +d.dissolved_oxygen;
+    d.water_elevation = +d.water_elevation;
+    d.nitrogen = +d.nitrogen;
+  });
+
+  // Scale the range of the data
+  x2.domain(d3.extent(data, function(d) { return d.date; }));
+      y03.domain([d3.min(data, function(d) {return Math.min(d.nitrogen);}), 
+        d3.max(data, function(d) {return Math.max(d.nitrogen);})]);
+
+  // Add the valueline path.
+  svg3.append("path")
+    .attr("id","valueline3")
+    .data([data])
+    .style("stroke", "#225ea8")
+    .style("stroke-width","2")
+    .attr("class", "line")
+    .attr("fill", "none")
+    .attr("d", valueline3);
+
+  // Add the X Axis
+  svg3.append("g")
+    .attr("id","axis3")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x2));
+
+  // Add the Y0 Axis
+  svg3.append("g")
+    .attr("id","axis3")
+    .attr("class", "axisSteelBlue")
+    .call(d3.axisLeft(y03))
+      .append("text")
+        .attr("fill", "#000")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", "0.71em")
+        .attr("text-anchor", "end")
+        .text("Nitrogen");
+
+});
+
+function updateGraph3(dataToInclude,oldData,yearUpdate,dataByYear3){
+  d3.selectAll("#valueline3").remove();
+  d3.selectAll("#axis3").remove();
+  d3.selectAll("#vertical2").remove();
+
+  console.log(dataByYear3);
+
+
+  if (yearUpdate) {
+    currentYear = dataToInclude;
+    if(dataToInclude === "All") {
+      currentData = oldData;
+      data = oldData;
+    } 
+
+    else {
+
+      // define the 1st line
+      var valueline3 = d3.line()
+          .curve(d3.curveCatmullRom.alpha(0.5))
+          .x(function(d) { return x2(d.date); })
+          .y(function(d) { return y03(parseFloat(d[currentField])); });
+
+      
+      console.log(dataByYear3);
+      data = dataByYear3[dataToInclude];
+      currentData = data;
+
+      data.forEach(function(d,i) {
+        var tmp = ((d.datetime).split(" "))[0];
+        d.date = parseTime3(tmp);
+        d.discharge = +d.discharge;
+        d.gauge_height = +d.gauge_height;
+        d.water_velocity = +d.water_velocity;
+        d.temperature = +d.temperature;
+        d.conductance = +d.conductance;
+        d.salinity = +d.salinity;
+        d.pH = +d.pH;
+        d.turbidity = +d.turbidity;
+        d.dissolved_oxygen = +d.dissolved_oxygen;
+        d.water_elevation = +d.water_elevation;
+        d.nitrogen = +d.nitrogen;
+      });
+
+      // Scale the range of the data
+      x2.domain(d3.extent(data, function(d) { return d.date; }));
+      y03.domain([d3.min(data, function(d) {return Math.min(d[currentField]);}), 
+        d3.max(data, function(d) {return Math.max(d[currentField]);})]);
+
+      // Add the valueline path.
+      svg3.append("path")
+        .attr("id","valueline3")
+        .data([data])
+        .style("stroke", "#225ea8")
+        .style("stroke-width","1")
+        .attr("class", "line")
+        .attr("fill", "none")
+        .attr("d", valueline3);
+
+      // Add the X Axis
+      svg3.append("g")
+        .attr("id","axis3")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x2));
+
+      // Add the Y0 Axis
+      svg3.append("g")
+        .attr("id","axis3")
+        .attr("class", "axisSteelBlue")
+        .call(d3.axisLeft(y03))
+          .append("text")
+            .attr("fill", "#000")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", "0.71em")
+            .attr("text-anchor", "end")
+            .text(currentField);
+    }
+  } 
+
+  else {
+
+    year = currentYear;
+    currentField = dataToInclude;
+
+    var valueline3 = d3.line()
+      .curve(d3.curveCatmullRom.alpha(0.5))
+      .x(function(d) { return x2(d.date); })
+      .y(function(d) { return y03(parseFloat(d[currentField])); });
+
+    var i = 0, data = oldData, dataByYear3 = {};
+      for(let entry of data) {
+        var datetime = entry.datetime, yr;
+        datetime = datetime.split(" ");
+        datetime = datetime[0].split("-");
+        yr = datetime[0];
+        i++;
+        if(dataByYear3[yr]) {
+          dataByYear3[yr].push(entry);
+        } else {
+          dataByYear3[yr]=[entry];
+        }
+      }
+
+      data = dataByYear3[currentYear];
+      tmp = [];
+      for(let entry of data) {
+        if(entry[dataToInclude]) {
+          tmp.push(entry);
+        }
+      }
+
+      console.log(tmp);
+
+      data = tmp;
+      currentData = data;
+
+      data.forEach(function(d,i) {
+        var tmp = ((d.datetime).split(" "))[0];
+        d.date = parseTime3(tmp);
+        d.discharge = +d.discharge;
+        d.gauge_height = +d.gauge_height;
+        d.water_velocity = +d.water_velocity;
+        d.temperature = +d.temperature;
+        d.conductance = +d.conductance;
+        d.salinity = +d.salinity;
+        d.pH = +d.pH;
+        d.turbidity = +d.turbidity;
+        d.dissolved_oxygen = +d.dissolved_oxygen;
+        d.water_elevation = +d.water_elevation;
+        d.nitrogen = +d.nitrogen;
+      });
+
+      // Scale the range of the data
+      x2.domain(d3.extent(data, function(d) { return d.date; }));
+      y03.domain([d3.min(data, function(d) {return Math.min(d[currentField]);}), 
+        d3.max(data, function(d) {return Math.max(d[currentField]);})]);
+
+      // Add the valueline path.
+      svg3.append("path")
+        .attr("id","valueline3")
+        .data([data])
+        .style("stroke", "#225ea8")
+        .style("stroke-width","1")
+        .attr("class", "line")
+        .attr("fill", "none")
+        .attr("d", valueline3);
+
+      // Add the X Axis
+      svg3.append("g")
+        .attr("id","axis3")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x2));
+
+      // Add the Y0 Axis
+      svg3.append("g")
+        .attr("id","axis3")
+        .attr("class", "axisSteelBlue")
+        .call(d3.axisLeft(y03))
+          .append("text")
+            .attr("fill", "#000")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", "0.71em")
+            .attr("text-anchor", "end")
+            .text(currentField);
+
+  }
+
+
+}
+
+
+
+})();
+
+
+
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////3333333333333///////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+/////////////////////////////////
+
+
+
+/* Ratios of Additional Data */
+
 
 
 

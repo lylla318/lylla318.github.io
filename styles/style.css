@@ -51,7 +51,8 @@ body {
 }
 
 #menuText {
-	font-size:8px;
+	font-size:10px;
+  font-weight:bold;
 }
 h1 {
 	font-family:vcr,EffraBold !important; 

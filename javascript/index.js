@@ -107,10 +107,10 @@ for (var i=1 ; i<circs.length-1 ;i++) {
           d3.select(this).style("fill","#02818a").style("font-size","10px"); 
         })
         .on("mouseout",function(){
-          if(!d3.select(this).classed("clicked")) {d3.select(this).style("fill","black").style("font-size","8px") }
+          if(!d3.select(this).classed("clicked")) {d3.select(this).style("fill","black").style("font-size","10px") }
         })
         .on("click",function(){
-          d3.selectAll(".clicked").style("fill","black").style("font-size","8px").classed("clicked",false);
+          d3.selectAll(".clicked").style("fill","black").style("font-size","10px").classed("clicked",false);
           d3.select(this).style("fill","#02818a").style("font-size","10px").attr("class","clicked")
         })
 
