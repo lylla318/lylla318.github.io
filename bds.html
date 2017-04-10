@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<body>
+
+
+<div class="vis"> </div>
+
+<!-- load the d3.js library -->     
+<script src="javascript/d3.v4.min.js"></script>
+<script src="javascript/d3-tip.js"></script>
+<link href="styles/style-bds.css" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Raleway:400,800,700" rel="stylesheet"> 
+
+<script>
+
+// set the dimensions and margins of the vis
+var margin = {top: 10, right: 30, bottom: 30, left: 40},
+    width = 1200 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom, basePadding = 10,
+    graphHeight = 400, topPadding = 50, barPadding = 80, textY = 600, radius = 3,circlePadding = 2;
+
+// parse the date / time
+var parseDate = d3.timeParse("%d-%m-%Y");
+
+
+var svg = d3.select(".vis").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", 
+          "translate(" + margin.left + "," + margin.top + ")");
+
+var tool_tip = d3.tip()
+    .attr("class", "d3-tip")
+    .offset([-8, 0])
+    .html(function(d) { 
+      return "<div class = 'tip-main'>" 
+            + "<div class = 'tip-header'>" + "<span class='tip-date'>" + d.date + "</span><br>" 
+            + "<br>" + "<span class='tip-headline'>" + d.Headline + "</span>" + "</div><br>" 
+            + "<div class = 'tip-body'>" + d.Summary + "</div><br><hr>" 
+            + "<div class = 'tip-footer'>" + d.City + ", " + d.Countries + "</div>" 
+            + "</div>"; 
+    });
+
+svg.call(tool_tip);
+
+svg.append("line")
+    .attr("class","line") 
+    .style("stroke-dasharray", ("1, 2"))         
+    .style("stroke", "#ddd")  
+    .attr("x1", basePadding)     
+    .attr("y1", graphHeight+basePadding*5)      
+    .attr("x2", width-topPadding*3-8)     
+    .attr("y2", graphHeight+basePadding*5);
+
+var indexToYear = {0:"2005", 1:"2006", 2:"2007", 3:"2008", 4:"2009", 5:"2010", 6:"2011", 7:"2012", 8:"2013", 9:"2014", 10:"2015", 11:"2016", 12:"2017"};
+
+var yearToIndex = {"2005":0, "2006":1, "2007":2, "2008":3, "2009":4, "2010":5, "2011":6, "2012":7, "2013":8, "2014":9, "2015":10, "2016":11, "2017":12};
+
+var yearDistribution = {"2005":0, "2006":0, "2007":0, "2008":0, "2009":0, "2010":0, "2011":0, "2012":0, "2013":0, "2014":0, "2015":0, "2016":0, "2017":0};
+
+for (let key  of Object.keys(yearDistribution)) {
+  yearDistribution[key] = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0,10:0,11:0,12:0};
+}
+
+for (var i = 0 ; i < 13 ; i++) {
+  var idx = i;
+  svg.append("line")
+    .attr("class","line") 
+    .style("stroke-dasharray", ("1, 2"))         
+    .style("stroke", "#ddd")  
+    .attr("x1", basePadding+(i*barPadding))     
+    .attr("y1", topPadding)      
+    .attr("x2", basePadding+(i*barPadding))     
+    .attr("y2", graphHeight+topPadding);
+
+  svg.append("text")
+      .attr("class","text")
+      .style("text-anchor", "start")
+      .style("fill","#ddd")
+      .style("cursor","pointer")
+      .attr("dx", "-.8em")
+      .attr("dy", ".15em")
+      .attr("transform", function(){
+        return "translate(" + (5+barPadding*idx) + "," + 470 + ")";
+      })
+      .text(indexToYear[i])
+}
+
+d3.csv("data/bds_impact.csv",function(data) {
+
+  var stratified = {};
+
+  for (let entry of data) {
+    var year = (entry.date).substring((entry.date).length,(entry.date).length-4);
+    var month = parseInt((entry.date).substring((entry.date).length-7,(entry.date).length-5));
+    if(stratified[year]) {
+      if(stratified[year][month]) {
+        stratified[year][month].push(entry);
+      } else {
+        stratified[year][month] = [entry];
+      }
+    } else {
+      stratified[year] = {month:[entry]}
+    }
+  }
+
+  extendStrat = [];
+  var numStratifications = 0;
+  for (let year of Object.keys(stratified)) {
+    for (let month of Object.keys(stratified[year])) {
+      numStratifications++;
+      if(stratified[year][month]){
+        tmp = []
+        for (let instance of stratified[year][month]) {
+          tmp.push(instance);
+        }
+        extendStrat.push(tmp);
+      }
+    }
+  }
+
+  var ctr = 0
+  var draw = setInterval(function(){ 
+    if(ctr < extendStrat.length) {
+      drawCircles(extendStrat[ctr]); 
+    } else {
+      stopDraw();
+    }
+    ctr++;
+  }, 10);
+
+  function stopDraw() {
+    clearInterval(draw);
+  }
+
+
+  function drawCircles(circs) {
+    for (let entry of circs) {
+      var year = (entry.date).substring((entry.date).length,(entry.date).length-4);
+      var month = parseInt((entry.date).substring((entry.date).length-7,(entry.date).length-5));
+      var idx = yearToIndex[year];
+
+      if(year != "2004" && yearDistribution[year][month] != null) {
+
+      svg.append("circle")
+        .data([entry])
+        .attr("id","circ")
+        .attr("r",radius)
+        .attr("cx",function(){
+          return basePadding+(idx*barPadding)+(month*(80/11)) 
+        })
+        .attr("cy",function(){
+          if(yearDistribution[year][month] === 0) {
+            return (graphHeight/2)+50
+          } else {
+            if(yearDistribution[year][month]%2==0) {
+              return ((graphHeight/2)+50) + (yearDistribution[year][month]/2)*(radius*2) + circlePadding;
+            }
+            else {
+              return ((graphHeight/2)+50) - (yearDistribution[year][month]/2)*(radius*2) - circlePadding;
+            }
+          }
+        })
+        .attr("fill","#ddd")
+        .style("cursor","pointer")
+        .on("mouseover",function(){
+          tool_tip.show(entry);
+          d3.select(this).attr("r",function() { return (radius * 2*entry.growth) });
+          d3.selectAll("#circ").style("opacity",0.5);
+          d3.select(this).style("opacity",1);
+        })
+        .on("mouseout",function(){
+          tool_tip.hide(entry);
+          d3.select(this).attr("r",radius);
+          d3.selectAll("#circ").style("opacity",1);
+        });
+
+      yearDistribution[year][month]++;
+
+      }
+    }
+  }
+
+  // for (let entry of data) {
+  //   var year = (entry.date).substring((entry.date).length,(entry.date).length-4);
+  //   var month = parseInt((entry.date).substring((entry.date).length-7,(entry.date).length-5));
+  //   var idx = yearToIndex[year];
+
+  //   if(year != "2004" && yearDistribution[year][month] != null) {
+
+  //   svg.append("circle")
+  //     .data([entry])
+  //     .attr("id","circ")
+  //     .attr("r",radius)
+  //     .attr("cx",function(){
+  //       return basePadding+(idx*barPadding)+(month*(80/11)) 
+  //     })
+  //     .attr("cy",function(){
+  //       // console.log(entry)
+  //       // console.log(yearDistribution[year][month])
+  //       if(yearDistribution[year][month] === 0) {
+  //         return (graphHeight/2)+50
+  //       } else {
+  //         if(yearDistribution[year][month]%2==0) {
+  //           return ((graphHeight/2)+50) + (yearDistribution[year][month]/2)*(radius*2) + circlePadding;
+  //         }
+  //         else {
+  //           return ((graphHeight/2)+50) - (yearDistribution[year][month]/2)*(radius*2) - circlePadding;
+  //         }
+  //       }
+  //     })
+  //     .attr("fill","#ddd")
+  //     .style("cursor","pointer")
+  //     .on("mouseover",function(){
+  //       tool_tip.show(entry);
+  //       d3.select(this).attr("r",function() { return (radius * 2*entry.growth) });
+  //       d3.selectAll("#circ").style("opacity",0.5);
+  //       d3.select(this).style("opacity",1);
+  //     })
+  //     .on("mouseout",function(){
+  //       tool_tip.hide(entry);
+  //       d3.select(this).attr("r",radius);
+  //       d3.selectAll("#circ").style("opacity",1);
+  //     });
+
+  //   yearDistribution[year][month]++;
+
+  //   }
+  // }
+
+})
+
+
+
+</script>
+</body>
+
+
+
+
+

@@ -165,14 +165,14 @@ d3.json("data/syria-districts-topojson.json", function(error, syr) {
           } else {
             clearInterval(interval2);
           }
-        }, 500/dayData.length);
+        }, 1000/dayData.length);
         attackDay++;
         time1++;
       }
       else { 
          clearInterval(interval1);
       }
-    }, 500);
+    }, 1000);
   }
 
 });
