@@ -6,11 +6,11 @@
             <link rel="stylesheet" href="styles/bootstrap.min.css">
             <link rel="stylesheet" href="styles/style_gv_instances.css">
             <link rel="stylesheet" href="styles/chosen.min.css"></script>  
-            <script src="javascript/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
-            <script src="javascript/chosen.jquery.min.js"></script>
-            <script src="javascript/d3.v4.min.js" type="text/javascript" charset="utf-8"></script>
-            <script src="javascript/d3-tip.js"></script>
-            <script src="javascript/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+            <script src="libraries/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+            <script src="libraries/chosen.jquery.min.js"></script>
+            <script src="libraries/d3.v4.min.js" type="text/javascript" charset="utf-8"></script>
+            <script src="libraries/d3-tip.js"></script>
+            <script src="libraries/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
             
       </head>
 <body>
@@ -287,7 +287,7 @@
     <span class="reset" style="cursor:pointer;font-size:12px;font-family:EffraLite !important;"> <br>x Reset visualization. <br></span>
     </div>
 
-    <div class="col-md-12" style="height:1000px; margin-top:0%; margin-left:2%; margin-bottom:5%; text-decoration:underline;">
+    <div class="col-md-12" style=" margin-top:0%; margin-left:2%; margin-bottom:5%; text-decoration:underline;">
           <div class="vis"></div>
     </div>
 
@@ -304,7 +304,7 @@ $(document).ready(function () {
 
 var margin = {top: 5, right: 5, bottom: 5, left: 5},
     width = 1200 - margin.left - margin.right,
-    height = 800 - margin.top - margin.bottom, r = 3,
+    height = 400 - margin.top - margin.bottom, r = 3,
     rectWidth = 30, rectHeight = 12, blocksPerRow = 8, 
     lineX1 = 1, lineX2 = 300, textLineOffset = 5, textX = 15, 
     lineBlockOffset = 10, extentY = 15, baseX=1, switchX = false,
