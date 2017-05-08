@@ -25,6 +25,8 @@ a{text-decoration:none};
       cursor:pointer;
       text-align: center;
       border-bottom-color:solid 1px transparent;
+
+overflow-x:hidden;
 }
 
 .variables{margin-left:0% !important; margin-top:2%;}
@@ -39,9 +41,7 @@ a{text-decoration:none};
 h4 {
     font-size: 15px !important;
 }
-.chart, .ratios {
-	margin-left:2%;
-}
+
 .overlay {
   fill: none;
   pointer-events: all;
@@ -60,5 +60,16 @@ h4 {
 
 .remove {
   visibility: hidden;
+}
+
+.square {
+    height: 400px;
+    width: 450px;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    margin-top:-6%;
 }
 

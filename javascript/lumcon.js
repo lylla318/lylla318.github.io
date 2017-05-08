@@ -77,11 +77,14 @@ d3.csv("data/averages.csv", function(error, data) {
   data = dataByYear["08"];
 
   // format the data
+  var i = 0
   data.forEach(function(d) {
+    if(i<20) {console.log(d.datetime);}
     d.date = parseTime(d.datetime);
     d.discharge = +d.discharge;
     d.gauge_height = +d.gauge_height;
     d.water_velocity = +d.water_velocity;
+    i++
   });
 
   // Scale the range of the data
@@ -230,6 +233,8 @@ function updateYear(yr){
   d3.selectAll(".focus-text").remove()
   d3.selectAll(".focus").remove()
   d3.selectAll(".circle").remove()
+
+  $(".square").empty();
   
   if(yr === "All") {
     data = oldData;
@@ -268,6 +273,15 @@ function updateYear(yr){
     .style("stroke-width","2")
     .attr("fill", "none")
     .attr("d", valueline2);
+
+  var p1 = x(parseTime("11-2-08"));
+  console.log(p1);
+
+  // svg.append("circle")
+  //   .attr("r",10)
+  //   .attr("cx",)
+  //   .attr("cy",)
+  //   .attr("fill","#ddd")
 
   // Add the X Axis
   svg.append("g")
@@ -376,6 +390,12 @@ function updateYear(yr){
         focus_2.select("text").text(Math.round(d.gauge_height * 100) / 100);
 
       });
+
+    /* Add satellite image. */
+    var img = "media/lumcon-photos/1-2-20"+String(yr)+".png";
+    $(".satellite-img1").prepend("<img id='theImg' src='"+img+"'/>")
+
+    /* Add corresponding 'x' to line. */
 
 
 }

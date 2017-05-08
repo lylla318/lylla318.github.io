@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link href="styles/style.css" rel="stylesheet">
+    <link href="styles/font-awesome.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,800" rel="stylesheet"><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+    <link rel="stylesheet" type="text/css" href="styles/nouislider.min.css"> 
+    <link rel="stylesheet" type="text/css" href="styles/dc.css"/>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+  </head>
+  <body>
+    <!-- HEADER -->
+    <div class="header col-md-12"> Journal <span class="insights">Insights</span></div>
+
+    <!-- <div class="header col-md-3"></div>
+    <div class="header col-md-9">
+      
+      </div>
+    </div> -->
+
+
+
+    <!-- FILTERS [LH-PANEL] -->
+    <div class="col-md-4">
+      <div class="row">
+        <div class="">
+          <div class="panel-group" id="accordion">
+            <div class="panel panel-default" style="width:340px">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                   <span class="start" style="color:#696969">Filter by:</span> <span class="accordion-text">Academic Unit</span>
+                  </a>
+                </h4>
+              </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+              <div class="panel-body" id="academic-unit">
+                <input type="text" class="form-control" id="deptInput" placeholder="Search">  
+              </div>
+            </div>
+          </div>
+            <div class="panel panel-default" style="width:340px">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                   <span class="start">Filter by:</span> <span class="accordion-text"> Subject Area </span>
+                  </a>
+                </h4>
+              </div>
+            <div id="collapseFour" class="panel-collapse collapse">
+              <div class="panel-body" id="funagen">
+                 <input type="text" class="form-control" id="fundingInput" placeholder="Search">
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default" style="width:340px">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                  <span class="start">Filter by:</span> <span class="accordion-text"> Active Year </span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+              <div class="panel-body" id="date">
+                <div id="range"></div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-left:1%">
+<!--             <h5><a onclick="checkAll()">Check All</a> | <a onclick="uncheckAll()">Uncheck All</a></h5>
+ -->            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+              <div class="col-md-6" style="margin-bottom:1%;">
+                  <h6 style="margin-left:-1%; margin-top:-2%; color:#696969;">List of Journals</h6>
+                  <div id="custom-search-input" style="margin-left:-3%; width:335px;">
+                      <div class="input-group col-md-12">
+                          <input type="text" class="form-control input-small" placeholder="Search" />
+                      </div>
+                  </div>
+              </div>
+        </div>
+      <!-- JOURNAL LISTING -->
+      <div id="journal-list"></div>
+    </div>
+  </div>
+
+    
+
+    <!-- VISUALIZATION PANEL -->
+    <div class="col-md-8 vis-panel">
+      <div id="barChart"></div>
+      <div id="bubbleChart"></div>
+    </div>
+
+
+
+    <script src="js/crossfilter.v1.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/topojson.v1.min.js"></script>
+    <script src="http://d3js.org/queue.v1.min.js"></script>
+    <script src="js/list.js"></script>
+    <script src="js/journals.js"></script>
+    <script src="js/nouislider.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.6/lodash.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "WOS:000272308200007",
+    "idType": "WOS",
+    "scholarURI": "http://scholars.cornell.edu/individual/UR-255049",
+    "articleTitle": "The physics of gas chimney and pockmark formation, with implications for assessment of seafloor hazards and gas sequestration",
+    "articleDoi": "10.1016/j.marpetgeo.2009.09.010",
+    "yearOfPublication": "2010",
+    "authors": [
+      {
+        "authorName": "Cathles, L. M.",
+        "authorAffiliation": {
+          "localName": "Cornell University",
+          "gridURI": "https://www.grid.ac/institutes/grid.5386.8"
+        },
+        "country": "Colombia",
+        "state": null,
+        "cornellAffiliation": null
+      },
+      {
+        "authorName": "Chen, Duofu",
+        "authorAffiliation": {
+          "localName": "Chinese Acad Sci",
+          "gridURI": null
+        },
+        "country": "Germany",
+        "state": null,
+        "cornellAffiliation": null
+      },
+      {
+        "authorName": "Su, Zheng",
+        "authorAffiliation": {
+          "localName": "Chinese Acad Sci",
+          "gridURI": null
+        },
+        "country": "China",
+        "state": null,
+        "cornellAffiliation": "COLLEGE OF ENGINEERING"
+      }
+    ]
+  }
+]
