@@ -103,7 +103,7 @@ a:hover {
 
 .bottom {
   position: absolute;
-  margin: 35px 45px 0 45px;
+  margin: 70px 45px 0 45px;
   width:94%;
   position: relative;
   height: 35px;
@@ -393,6 +393,14 @@ ul.img-list li:hover span.text-content {
 }
 
 
+.box-lg {
+  margin-top:3%;
+}
+
+/*.box-ls {
+  margin-top:3%;
+}
+*/
 .description_box p {
   width: 80% !important;
 }
