@@ -1,11 +1,11 @@
 @font-face {
     font-family: MarkPro;
-    src: url(font/MarkPro.otf);
+    src: url("fonts/MarkPro.otf");
 }
 
 @font-face {
     font-family: MarkPro;
-    src: url(font/MarkPro-Bold.otf);
+    src: url("fonts/MarkPro-Bold.otf");
     font-weight: bold;
 }
 @font-face{
