@@ -16,6 +16,7 @@
 .tagline {
   font-family: GT-America;
   font-size:12px;
+  margin-bottom:3%;
 }
 
 body {
@@ -314,7 +315,7 @@ img.Image {
 
 #ImageContainer {
 
-  margin-top:3%;
+  margin-top:8%;
 }
 
 
