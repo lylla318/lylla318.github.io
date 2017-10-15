@@ -1,29 +1,22 @@
 
-// ["Home","Visualizations","Blog","Poetry","About","Contact"]
 $(document).ready(function(){
-  $(".Portfolio").click(function (){
-    $('html, body').animate({ scrollTop: $(".visualizations-section").offset().top-130 }, 2000);
+  $(".WORK").click(function (){
+    $('html, body').animate({ scrollTop: $(".visualizations-section").offset().top-130 }, 1000);
   });
-  // $(".Blog").click(function (){
-  //   $('html, body').animate({ scrollTop: $(".blog-section").offset().top-130 }, 2000);
-  // });
-  // $(".Poetry").click(function (){
-  //   $('html, body').animate({ scrollTop: $(".poetry-section").offset().top-130 }, 2000); 
-  // });
-  $(".About").click(function (){
-    $('html, body').animate({ scrollTop: $(".about-section").offset().top-130 }, 2000);
+  $(".ABOUT").click(function (){
+    $('html, body').animate({ scrollTop: $(".about-section").offset().top-130 }, 1000);
   });
-  $(".Contact").click(function (){
-    $('html, body').animate({ scrollTop: $(".contact-section").offset().top-130 }, 2000);
+  $(".CONTACT").click(function (){
+    $('html, body').animate({ scrollTop: $(".contact-section").offset().top-130 }, 1000);
   });
-  $(".Home").click(function (){
-    $('html, body').animate({ scrollTop: $(".visualizations-section").offset().top-130 }, 2000);
+  $(".HOME").click(function (){
+    $('html, body').animate({ scrollTop: $(".visualizations-section").offset().top-130 }, 1000);
   });
 });
 
 var margin = {top: 2, right: 2, bottom: 2, left: 2},
     width = 500 - margin.left - margin.right,
-    height = 100 - margin.top - margin.bottom, r = 3;
+    height = 65 - margin.top - margin.bottom, r = 3;
 
 var svg = d3.select(".menu").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -38,9 +31,7 @@ var circs = [
   [105, 9],
   [155, 9],
   [205, 9],
-  [255, 9],
-  [305, 9],
-  [355, 9]
+  [255, 9]
 ];
 
 var points = [
@@ -48,9 +39,7 @@ var points = [
   [[105-r, 9],[55+r,9]],
   [[155-r, 9],[105+r, 9]],
   [[205-r, 9],[155+r, 9]],
-  [[255-r, 9],[205+r, 9]],
-  [[305-r, 9],[255+r, 9]],
-  [[355-r, 9],[305+r, 9]]
+  [[255-r, 9],[205+r, 9]]
 ];
 
 var valueline = d3.line()
@@ -87,7 +76,7 @@ svg.selectAll(".point")
         .style("cursor","pointer")
         .attr("transform", function(d) { return "translate(" + d + ")"; });r
 
-var menuItems = ["Home","Portfolio","Blog","Poetry","About","Contact"]
+var menuItems = ["HOME","WORK","ABOUT","CONTACT"]
 
 for (var i=1 ; i<circs.length-1 ;i++) {
     var x = circs[i][0] - 2;

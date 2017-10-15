@@ -183,53 +183,6 @@ d3.csv("data/bds_impact.csv",function(data) {
     }
   }
 
-  // for (let entry of data) {
-  //   var year = (entry.date).substring((entry.date).length,(entry.date).length-4);
-  //   var month = parseInt((entry.date).substring((entry.date).length-7,(entry.date).length-5));
-  //   var idx = yearToIndex[year];
-
-  //   if(year != "2004" && yearDistribution[year][month] != null) {
-
-  //   svg.append("circle")
-  //     .data([entry])
-  //     .attr("id","circ")
-  //     .attr("r",radius)
-  //     .attr("cx",function(){
-  //       return basePadding+(idx*barPadding)+(month*(80/11)) 
-  //     })
-  //     .attr("cy",function(){
-  //       // console.log(entry)
-  //       // console.log(yearDistribution[year][month])
-  //       if(yearDistribution[year][month] === 0) {
-  //         return (graphHeight/2)+50
-  //       } else {
-  //         if(yearDistribution[year][month]%2==0) {
-  //           return ((graphHeight/2)+50) + (yearDistribution[year][month]/2)*(radius*2) + circlePadding;
-  //         }
-  //         else {
-  //           return ((graphHeight/2)+50) - (yearDistribution[year][month]/2)*(radius*2) - circlePadding;
-  //         }
-  //       }
-  //     })
-  //     .attr("fill","#ddd")
-  //     .style("cursor","pointer")
-  //     .on("mouseover",function(){
-  //       tool_tip.show(entry);
-  //       d3.select(this).attr("r",function() { return (radius * 2*entry.growth) });
-  //       d3.selectAll("#circ").style("opacity",0.5);
-  //       d3.select(this).style("opacity",1);
-  //     })
-  //     .on("mouseout",function(){
-  //       tool_tip.hide(entry);
-  //       d3.select(this).attr("r",radius);
-  //       d3.selectAll("#circ").style("opacity",1);
-  //     });
-
-  //   yearDistribution[year][month]++;
-
-  //   }
-  // }
-
 })
 
 
