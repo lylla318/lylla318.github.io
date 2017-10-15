@@ -187,23 +187,21 @@ a:hover {
 }
 .blurb {
 	font-family: MarkPro;
-	width:50%;
 	font-size:18px !important;
-	display:table;
-  margin: 0 auto;
   text-align: justify;
   text-justify: inter-word;
-	margin-top:5%;
+	margin-top:6% !important;
+}
+
+.blurb, .contact-me, .article-box {
+  width:50%;
+  display:table;
+  margin: 0 auto;
 }
 
 .contact-me{
-  /*font-family: MarkPro;*/
   font-family: GT-America;
   font-size:12px !important;
-  width:50%;
-  font-size:18px !important;
-  display:table;
-  margin: 0 auto;
   margin-top:1.5%;
 }
 
@@ -213,13 +211,9 @@ a:hover {
 }
 
 .article-box{
-  /*font-family: MarkPro;*/
   font-family: GT-America;
   font-size:12px !important;
-  width:50%;
   font-size:18px !important;
-  display:table;
-  margin: 0 auto;
   margin-top:5%;
 }
 
@@ -314,8 +308,8 @@ img.Image {
 /*div#ImageContainer { width: 100%; }*/
 
 #ImageContainer {
-
   margin-top:8%;
+  max-width:650px;
 }
 
 
@@ -406,34 +400,59 @@ ul.img-list li:hover span.text-content {
   width: 80% !important;
 }
 
-@media only screen and (max-width: 450px) {
 
-/*  .description_boxes {
-    margin-left:4.5%;
-  }
-
-  .description_box {
-    width:90%;
-    padding-top: 0%;
-    padding-bottom: 0%;
-  }
-*/
-  
-}
 
 
 @media only screen and (max-width: 750px) {
 
-  .description_boxes {
-    margin-left:4.5%;
+  .blurb, .contact-me, .article-box {
+    width:85%;
+    display:table;
+    margin: 0 auto;
   }
 
-  .description_box {
-    width:90%;
-    padding-top: 0%;
-    padding-bottom: 0%;
+  .blurb {
+    margin-top: 9% !important;
   }
 
+   .blurb p {
+    font-size: 14px;
+   }
+
+  .bottom .logo_area {
+    padding-right:10px;
+    left: -37px;
+  }
+
+  .bottom .mit_area {
+    padding-left:20px;
+  }
+
+  .bottom {
+    width:86%;
+  }
+
+  .description_box h1, .article-box h1 {
+    font-size: 20px !important;
+  }
+
+  .article-box {
+    margin-top: 30px !important;
+    margin-bottom: 60px !important;
+  }
   
+}
+
+
+@media only screen and (max-width: 450px) {
+
+  .senseable_logo, .mit_logo {
+    /*width: 270px; */
+    height: 15px;
+  } 
+
+  .header {
+    width: 90%;
+  }
 }
 
