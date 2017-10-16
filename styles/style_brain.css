@@ -1,10 +1,19 @@
+@font-face{
+    font-family: "GT-America";
+    src: url('fonts/GT-America-Mono-Light-v1.otf')
+}
 
+@font-face{
+    font-family: "BebasNeue";
+    src: url('fonts/BebasNeue-Bold.otf')
+}
 
 body {
-    background: #18121E;
-    font-family: "Inconsolata";
+    /*background: #18121E;*/
+    background: white;
+    font-family: "GT-America";
     font-weight: lighter;
-    color: white; 
+    color: #373a3c; 
     overflow-x:hidden;
   }
 
@@ -19,11 +28,20 @@ a {
   float:left;
 }
 
+#caption {
+  font-family: "BebasNeue" !important;
+  letter-spacing: 2px;
+}
+
 #trendswrapper {
   float:left; 
   width: 60%; 
   height: 95%; 
   clear:both
+}
+
+path.domain {
+  fill:none;
 }
 
 #trends {
@@ -41,16 +59,19 @@ a {
   padding-right: 17em;
 }
 
-
+p .console {
+  font-size:40px !important; 
+  color:black !important;
+}
 
 .type {
   position: absolute;
-  margin-top: 30px;
   margin-left: 30px;
 }
 
 svg {
-  background-color: #18121E;
+  /*background-color: #18121E;*/
+  background-color: white;
 }
 
 svg #layer1 #path8 {
@@ -77,8 +98,6 @@ svg #layer1 #path8 {
 }
 
 .slider {
-	margin-top: 40px;
-	margin-left: 10px;
 	z-index:3;
 
 }
@@ -261,7 +280,7 @@ h4{
 
 
 .secondary-menus {
-  width:1000px;
+  width:100%;
   margin-top: 0%;
   margin-left:0%;
   padding: 0%;
@@ -270,6 +289,8 @@ h4{
 }
 
 #dataset-picker-1{
+  font-family: BebasNeue;
+  letter-spacing: 2px;
   position: relative;
   margin-left: 0%;
   padding-left: 0%;
@@ -279,6 +300,8 @@ h4{
 }
 
 #dataset-picker-2{
+  font-family: BebasNeue;
+  letter-spacing: 2px;
   margin-left:60%;
   padding-left: 0%;
   padding-top: 1;
@@ -287,6 +310,10 @@ h4{
   width: 500px;
   z-index:1;
   
+}
+
+#dataset-picker-1 h2, #dataset-picker-2 h2{
+  margin-left:1%;
 }
 
 .plots {
@@ -340,16 +367,13 @@ h4{
 }
 
 #significance{
-/*    position: absolute;
-  left: 550px;*/
   padding: 8px 0px 8px 0px;
   width: 550px;
-/*      margin: 60px auto 20px auto;*/
   margin-top: -20px;
-
   float: left;
   overflow: hidden;
-  background: #18121E;
+  /*background: #18121E;*/
+  background-color: white;
   border-radius: 5px;
   z-index:1;
 }
@@ -366,7 +390,10 @@ h2brain {
 }
 
 .context {
-  width: 1200px;
+  width: 80%;
+  text-transform: uppercase;
+  font-size: 13px;
+  margin-bottom:5%;
 }
 
 #hope text{
@@ -374,12 +401,19 @@ h2brain {
 }
 
 #hackedSliderTitle {
-    left: 380px;
-    display: block;
-    position: absolute;
-    top: 350px;
+  font-family: BebasNeue;
+  letter-spacing: 2px;
+  margin-top:5% !important;
 }
 
 #SATscores{
   margin-left: 220px;
+}
+
+.d3-slider-axis-bottom {
+  stroke: #aaaaaa !important;
+}
+
+.slider .d3-slider .d3-slider-horizontal {
+  border: ;
 }

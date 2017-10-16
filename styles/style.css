@@ -104,7 +104,7 @@ a:hover {
 
 .bottom {
   position: absolute;
-  margin: 70px 45px 0 45px;
+  margin: 50px 45px 0 45px;
   width:94%;
   position: relative;
   height: 35px;
@@ -308,7 +308,7 @@ img.Image {
 /*div#ImageContainer { width: 100%; }*/
 
 #ImageContainer {
-  margin-top:8%;
+  margin-top:2%;
   max-width:650px;
 }
 

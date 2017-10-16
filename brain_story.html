@@ -12,6 +12,8 @@
 
   <script src="libraries/jquery-3.1.1.min.js"></script>
 
+  <script src="libraries/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+
   <script src="libraries/d3.tip.v0.6.3.js"></script>
 
   <script src="libraries/jstat.min.js"></script>
@@ -19,12 +21,12 @@
   <script src="libraries/angular.min.js"></script>
 
   <script src = "libraries/typed.js"></script>
-<!-- 
-  <link rel="stylesheet" type="text/css" href="d3.slider.css" media="screen" /> -->
 
-  <script type="text/javascript" src="javascript/slider2.js"></script>
+  <script type="text/javascript" src="javascript/d3.slider.js"></script>
 
-  <link rel="stylesheet" href="styles/slider2.css" /> 
+  <link rel="stylesheet" type="text/css" href="styles/d3.slider.css" media="screen" />
+
+  <!-- <link rel="stylesheet" href="styles/slider2.css" />  -->
 
   <script type="text/javascript" src="libraries/regression.js"></script>
 
@@ -33,8 +35,6 @@
   <link href="styles/style_brain.css" rel='stylesheet' type='text/css'>
 
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,100' rel='stylesheet' type='text/css'>
-
-  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
 
 </head>
 
@@ -46,11 +46,11 @@
 
   <!-- MAIN WRAPPER -->
 
-  <div id="wrapper" style="width:2000px; height: 3000px; margin-left:0px;">
+  <div class="col-md-12" id="wrapper" >
 
     <div class="type"> </type>
 
-      <p class="console" style="font-size:40px; color:#d3d3d3;">
+      <p class="console" style="font-size:40px; color:#373a3c;">
 
         <span></span><span id="caption"></span><span id="cursor">|</span>
 
@@ -58,28 +58,36 @@
 
       <!-- CONTEXT INFO -->
 
-      <div class="context">
 
-          It is commonly shown that poverty has many effects on a child's development. A child raised in poverty is five times more likely to drop out of high school [1]. They are statistically more likely to score below average on state exams [2]. They are nearly half as likely to enroll in higher education compared to their high income peers [3]. Are these facts simply situational… or is there something physiological going on? 
+      <div class="col-md-12">
+        <div class="context">
 
-          <br><br>
+            It is commonly shown that poverty has many effects on a child's development. A child raised in poverty is five times more likely to drop out of high school [1]. They are statistically more likely to score below average on state exams [2]. They are nearly half as likely to enroll in higher education compared to their high income peers [3]. Are these facts simply situational… or is there something physiological going on? 
 
-          Our research shows otherwise. According to a study recently published in JAMA Pediatrics, there is correlation between poverty in children and the development of brain matter. “Poverty is tied to structural differences in several areas of the brain associated with school readiness skills, with the largest influence observed among children from the poorest households the poorest households… 
+            <br><br>
 
-          <br><br>
+            Our research shows otherwise. According to a study recently published in JAMA Pediatrics, there is correlation between poverty in children and the development of brain matter. “Poverty is tied to structural differences in several areas of the brain associated with school readiness skills, with the largest influence observed among children from the poorest households the poorest households… 
 
-          These developmental differences had consequences for children’s academic achievement. On average, children from low-income households scored 4 to 7 points lower on standardized tests (P less than 0.05). As much as 20% of the gap in test scores could be explained by explained by maturational lags in the frontal and temporal lobes” [4]. These developmental differences can be explored below. 
+            <br><br>
 
-          <br><br><br><br>
+            These developmental differences had consequences for children’s academic achievement. On average, children from low-income households scored 4 to 7 points lower on standardized tests (P less than 0.05). As much as 20% of the gap in test scores could be explained by explained by maturational lags in the frontal and temporal lobes” [4]. These developmental differences can be explored below. 
+
+            <br><br><br><br>
+        </div>
+
       </div>
 
-      <!-- BRAIN WILL GO HERE -->
-
-      <div class="brain2" id="brain2" > 
+      <div class="col-md-12">
         <div id ="hackedSliderTitle"><h3><u>Percent of Federal Poverty Line</u></h3></div>
-        <div class="slider" width="100%" id="hope"> </div>
+      </div>
 
-    </div> 
+      <div class="col-md-12">
+        <div style="width:800px">
+          <div class="slider" id="hope"> </div>
+        </div>
+      </div>
+
+      <div class="brain2" id="brain2" > </div> 
 
       <div class="context">
           <br><br><br><br>
@@ -124,16 +132,6 @@
 
       </div>
 
-      <!-- SIGNICANCE  -->
-
-      <div id = "significance">
-
-        <h2>Is your trend significant?</h2>
-
-            <span id = "pvalue"></span>
-
-      </div>
-
       <!-- SECOND VIZ -->
 
       <div class="plots">
@@ -175,8 +173,6 @@
         [5]"National Health Interview Survey", CDC, 2016. [Online]. Available: http://www.cdc.gov/nchs/nhis/index.htm. [Accessed: 27- Apr- 2016].<br>
         [6]"2014 Total Group Profile", College Board, 2014. [Online]. Available: https://secure-media.collegeboard.org/digitalServices/pdf/sat/TotalGroup-2014.pdf. [Accessed: 27- Apr- 2016].<br>
         [7]"Child Poverty", NCCP, 2016. [Online]. Available: http://www.nccp.org/topics/childpoverty.html. [Accessed: 27- Apr- 2016].
-        <a href="radial_vis/hiphop.html" role="button">Cornell Hip Hop Collection</a> 
-        <a href="lumcon/index.html" role="button">Wetland Loss Project</a> 
 
       </div>
 
@@ -251,7 +247,7 @@
 
     function typeLineTwo() {
 
-        caption = "Poverty's Effect On The Brain. A Visual Story.";
+        caption = "Poverty's Effect On The Developing Brain: A Visual Story.";
 
         type();
 
@@ -447,24 +443,17 @@ var h = 25, // Height of heatmap tile
     xAxis.scale(xScale);
 
     svgheatmap.append("g")
-
       .attr("class", "x axis")
-
       .call(xAxis)
-
       .selectAll("text")
-
-        // .attr("y", 200)
-
-        // .attr("dy", ".5em")
-
         .attr("x",-1* width-10)
-
         .attr("y",170)
-
         .attr("transform", "rotate(-65)")
-
-        .style("text-anchor", "end");
+        .style("text-anchor", "end")
+        .style("font-size","12px")
+        .style("font-family","GT-America")
+        .style("text-transform","uppercase")
+        .style("fill","#373a3c");
 
 
 
@@ -495,36 +484,28 @@ var h = 25, // Height of heatmap tile
     // Establish axes titles
 
     svgheatmap.append("text")
-
       .attr("x", 135)
-
       .attr("y", height-20)
-
       .style("text-anchor","middle")
-
       .text("Family Income as Fraction of Federal Poverty Line")
-
-      .attr("fill", "white")
-
+      .style("font-family","GT-America")
+      .style("text-transform","uppercase")
+      .style("fill","#373a3c")
       .style("font-size","14px");
 
 
 
     svgheatmap.append("text")
-
       .attr("x", -1 * height/2.75)
-
       .attr("y", -100)
-
       .attr("transform", "rotate(-90)")
-
       .style("text-anchor","middle")
-
-      .attr("fill","white")
-
+      .attr("fill","#373a3c")
       .style("font-size","14px")
-
-      .text("Age of Child");
+      .text("Age of Child")
+      .style("font-family","GT-America")
+      .style("text-transform","uppercase")
+      .style("fill","#373a3c");
 
 
 
@@ -1490,48 +1471,41 @@ function init(){
 
 
   trends.append("text").attr("x", width /2)
-
-                    .attr("y", height + 100)
-
-                    .style("text-anchor","middle")
-
-                    .text("Family Income as Fraction of Federal Poverty Line")
-
-                    .attr("fill", axisColor)
-
-                    .style("font-size","14px");
+      .attr("y", height + 100)
+      .style("text-anchor","middle")
+      .text("Family Income as Fraction of Federal Poverty Line")
+      .attr("fill", axisColor)
+      .style("font-size","14px")
+      .style("font-family","GT-America")
+      .style("text-transform","uppercase")
+      .style("fill","#373a3c");
 
 
 
   trends.append("text")
-
       .attr("transform", "rotate(-90)")
-
       .attr("y", -55 )
-
       .attr("x",  -1 * height/2)
-
       .style("text-anchor", "middle")
-
       .text("Percent With Disability")
-
-      .style("font-size","14px");
+      .style("font-size","14px")
+      .style("font-family","GT-America")
+      .style("text-transform","uppercase")
+      .style("fill","#373a3c");
 
 
 
 
 
   trends.append("text")
-
       .attr("y", 5 )
-
       .attr("x", width/2)
-
       .style("text-anchor", "middle")
-
       .text("Impact of Income")
-
-      .style("font-size","14px");
+      .style("font-size","14px")
+      .style("font-family","GT-America")
+      .style("text-transform","uppercase")
+      .style("fill","#373a3c");
 
 
 
@@ -1554,21 +1528,16 @@ function init(){
 
 
   trends.append("g")
-
         .attr("class", "x_axis")
-
         .call(xAxis).attr("transform","translate(0,"+ height + ")")
-
             .selectAll("text")
-
-            .style("font-size","14px")  
-
+            .style("font-size","12px")
+            .style("font-family","GT-America")
+            .style("text-transform","uppercase")
+            .style("fill","#373a3c")
             .style("text-anchor", "end")
-
             .attr("dx", "-.8em")
-
             .attr("dy", ".15em")
-
             .attr("transform", function(d) {
 
                 return "rotate(-65)" 
@@ -1594,13 +1563,12 @@ function init(){
 
 
   trends.append("g")
-
       .attr("class", "y_axis")
-
       .call(yAxis)
-
-      .style("font-size","14px")
-
+      .style("font-size","12px")
+      .style("font-family","GT-America")
+      .style("text-transform","uppercase")
+      .style("fill","#373a3c")
       .attr("stroke-width", 1);
 
 
@@ -1892,37 +1860,37 @@ d3.select("#allGenders").on("click",function(d){
 
 //Handle the heatmap selection
 
-d3.selectAll(".highlightBars").on("mouseover", function (d){
+// d3.selectAll(".highlightBars").on("mouseover", function (d){
 
-  var selected = d3.select(this)
+//   var selected = d3.select(this)
 
-  var type = d3.select(this).attr("id").slice(0,-13);
+//   var type = d3.select(this).attr("id").slice(0,-13);
 
-  var typeRectClass = type + "_heatmap";
-
-
-
-  //Point highlight effect
-
-  d3.select("#" + type + "_highlight").style("fill", "white");
-
-  //Do the heatmap effect
-
-  d3.selectAll(".heatmapHover").
-
-  filter(":not(."+typeRectClass + ")")
-
-            .transition()
-
-            .duration(transitionDuration * 0.5)
-
-            .style("opacity", 0.1);
+//   var typeRectClass = type + "_heatmap";
 
 
 
+//   //Point highlight effect
+
+//   d3.select("#" + type + "_highlight").style("fill", "#373a3c");
+
+//   //Do the heatmap effect
+
+//   d3.selectAll(".heatmapHover").
+
+//   filter(":not(."+typeRectClass + ")")
+
+//             .transition()
+
+//             .duration(transitionDuration * 0.5)
+
+//             .style("opacity", 0.1);
 
 
-});
+
+
+
+// });
 
 
 
@@ -1989,10 +1957,11 @@ var brain_color = "blue"
        .attr("x", 70)
        .attr("y", 195)
        .attr("text-anchor","middle")
-       .style("fill","white")
-       .style("font-family","Inconsolata")
+       .style("fill","#373a3c")
+       .style("font-family","GT-America")
+       .style("text-transform","uppercase")
        .text("Frontal Lobe")
-       .style("font-size","18px");
+       .style("font-size","14px");
 
 
     // svg.append("text")
@@ -2011,10 +1980,11 @@ var brain_color = "blue"
        .attr("x", 280)
        .attr("y", 95)
        .attr("text-anchor","middle")
-       .style("fill","white")
-       .style("font-family","Inconsolata")
+       .style("fill","#373a3c")
+       .style("font-family","GT-America")
+       .style("text-transform","uppercase")
        .text("Temporal Lobe")
-       .style("font-size","18px");
+       .style("font-size","14px");
 
     svg.append("path")
       .attr("d", "M 430 400 L 580 300 h 50 ")
@@ -2026,10 +1996,11 @@ var brain_color = "blue"
        .attr("x", 605)
        .attr("y", 295)
        .attr("text-anchor","middle")
-       .style("fill","white")
-       .style("font-family","Inconsolata")
+       .style("fill","#373a3c")
+       .style("font-family","GT-America")
+       .style("text-transform","uppercase")
        .text("Hippocampus")
-       .style("font-size","18px");
+       .style("font-size","14px");
 
     //Contains the percentge
     svg.append("rect")
@@ -2037,8 +2008,8 @@ var brain_color = "blue"
         .attr("y",120)
         .attr("width",300)
         .attr("height",330)
-        .attr("fill","black")
-        .attr("stroke","#7E7E7E");
+        .attr("fill","white")
+        .attr("stroke","none");
 
     //Start blurb
     svg.append("text")
@@ -2046,8 +2017,9 @@ var brain_color = "blue"
        .attr("x", 750 + (300/2))
        .attr("y", 5 + 210)
        .attr("text-anchor","middle")
-       .style("fill","white")
-       .style("font-family","Inconsolata")
+       .style("fill","#373a3c")
+       .style("font-family","GT-America")
+       .style("text-transform","uppercase")
        .style("font-weight","light")
        .text("Children at this level of poverty have only")
        .style("font-size","13px");
@@ -2060,7 +2032,8 @@ var brain_color = "blue"
        .attr("y", 140 + 210)
        .attr("text-anchor","middle")
        .style("fill","red")
-       .style("font-family","Inconsolata")
+       .style("font-family","GT-America")
+       .style("text-transform","uppercase")
        .text("98%")
        .style("font-size","175px");
 
@@ -2070,8 +2043,9 @@ var brain_color = "blue"
        .attr("x", 750 + (300/2))
        .attr("y", 175 + 210)
        .attr("text-anchor","middle")
-       .style("fill","white")
-       .style("font-family","Inconsolata")
+       .style("fill","#373a3c")
+       .style("font-family","GT-America")
+       .style("text-transform","uppercase")
        .text("of the average mass of grey matter.")
        .style("font-size","13px");
 
@@ -2089,7 +2063,7 @@ var brain_color = "blue"
 
 //draw the nodes that will be changed, appending id's to each
 
-var color = brain_color;
+var color = "#d3d3d3";
 var r = 2;
 
 for (var i=0 ; i < 5000 ; i++) {
@@ -2286,9 +2260,11 @@ function init_SAT(){
 
   SATplot.append("g")
     .attr("class", "x axis")
+    .style("fill","black")
     .attr("transform", "translate(0," + height + ")")
     .call(xAxis)
     .selectAll("text")
+      .style("fill","black")
       .style("text-anchor", "end")
       .style("font-size", "10px")
       .attr("dx","-1.5em")
@@ -2299,12 +2275,14 @@ function init_SAT(){
 
   SATplot.append("g")
     .attr("class", "y axis")
+    .style("fill","black")
     .attr("id","yaxis")
     .attr("transform", "translate(" + margin.left + ",0)")
     .transition()
     .duration(transitionDuration) 
     .call(yAxis)
     .selectAll("text")
+      .style("fill","black")
       .style("text-anchor", "end")
       .style("font-size", "10px")
       .attr("dx","-.8em")
