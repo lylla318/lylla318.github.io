@@ -20,8 +20,6 @@
 
   <script src="libraries/angular.min.js"></script>
 
-  <script src = "libraries/typed.js"></script>
-
   <script type="text/javascript" src="javascript/d3.slider.js"></script>
 
   <link rel="stylesheet" type="text/css" href="styles/d3.slider.css" media="screen" />
@@ -51,10 +49,12 @@
     <div class="type"> </type>
 
       <p class="console" style="font-size:40px; color:#373a3c;">
-
-        <span></span><span id="caption"></span><span id="cursor">|</span>
-
+        POVERTY'S AFFECT ON THE DEVELOPING BRAIN: A VISUAL STORY
       </p>
+
+      <span class="byline">by Lylla Younes and Mike Merril</span>
+      <span class="cornell-cis">Cornell Department of Computer Science, Spring 2016</span>
+
 
       <!-- CONTEXT INFO -->
 
@@ -78,16 +78,33 @@
       </div>
 
       <div class="col-md-12">
-        <div id ="hackedSliderTitle"><h3><u>Percent of Federal Poverty Line</u></h3></div>
-      </div>
-
-      <div class="col-md-12">
-        <div style="width:800px">
-          <div class="slider" id="hope"> </div>
+        <div class="subtitle">
+          <div id ="hackedSliderTitle">
+            <h3><u>Percent of Federal Poverty Line</u></h3>
+          </div>
         </div>
       </div>
 
-      <div class="brain2" id="brain2" > </div> 
+      <div class="col-md-12">
+        <div class="slider-container">
+          <div style="width:500px">
+            <div class="slider" id="hope"> </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12" style="position:relative;z-index:9999;">
+        <div class="percent-info">
+          <p>Children at this level of poverty have only <span id="brainPercent">98%</span> of the average mass of grey matter.</p>
+        </div>
+      </div>
+
+      
+      <div class="col-md-12" style="position:relative;z-index:-9999;margin-top:-60px">
+        <div class="slider-container" style="position:relative;z-index:-9999;">
+          <div class="brain2" id="brain2" > </div> 
+        </div>
+      </div>
 
       <div class="context">
           <br><br><br><br>
@@ -202,141 +219,11 @@
     /////////////////////////////////////////////////////////////////////////////
 
 
-
-
-
-    var captionLength = 0;
-
-    setInterval ('cursorAnimation()', 600);
-
-    captionEl = '#caption';
-
-
-
-
-
     // INDIV. FUNCTIONS
 
 
 
-    var captionLength = 0;
-
-    var caption = '';
-
-
-
-
-
-    $(document).ready(function() {
-
-        //setInterval ('cursorAnimation()', 600);
-
-        captionEl = $('#caption');
-
-  
-          setTimeout(function() {
-
-              typeLineTwo();
-
-          }, 500);
-
-
-    });
-
-
-
-    function typeLineTwo() {
-
-        caption = "Poverty's Effect On The Developing Brain: A Visual Story.";
-
-        type();
-
-    }
-
-
-    function type() {
-
-        captionEl.html(caption.substr(0, captionLength++));
-
-        if(captionLength < caption.length+1) {
-
-            setTimeout('type()', 50);
-
-        } else {
-
-            captionLength = 0;
-
-            caption = '';
-
-        }
-
-    }
-
-
-
-    function testErasingEffect() {
-
-        caption = captionEl.html();
-
-        captionLength = caption.length;
-
-        if (captionLength>0) {
-
-            erase();
-
-        } else {
-
-            $('#caption').html("You didn't write anything to erase, but that's ok!");
-
-            setTimeout('testErasingEffect()', 1000);
-
-        }
-
-    }
-
-
-
-    function erase() {
-
-        captionEl.html(caption.substr(0, captionLength--));
-
-        if(captionLength >= 0) {
-
-            setTimeout('erase()', 50);
-
-        } else {
-
-            captionLength = 0;
-
-            caption = '';
-
-        } 
-
-    }
-
-
-
-    function cursorAnimation() {
-
-        $('#cursor').animate({
-
-            opacity: 0
-
-        }, 'swing').animate({
-
-            opacity: 1
-
-        }, 'swing');
-
-    }
-
-
-
-
-
-
-
-var h = 25, // Height of heatmap tile
+    var h = 25, // Height of heatmap tile
 
         w = 25; // Width of heatmap tile
 
@@ -1530,8 +1417,10 @@ function init(){
   trends.append("g")
         .attr("class", "x_axis")
         .call(xAxis).attr("transform","translate(0,"+ height + ")")
+        .style("stroke","#373a3c")
+        .style("stroke-width","0.5")
             .selectAll("text")
-            .style("font-size","12px")
+            .style("font-size","11px")
             .style("font-family","GT-America")
             .style("text-transform","uppercase")
             .style("fill","#373a3c")
@@ -1556,7 +1445,7 @@ function init(){
 
   //var formatPercent = d3.format("0.00%");
 
-  var yAxis = d3.svg.axis().scale(y).orient("left").ticks(5).tickFormat(function(y){return y+"%";});
+  var yAxis = d3.svg.axis().scale(y).orient("left").ticks(6).tickFormat(function(y){return y+"%";});
 
   //var yAxis = d3.svg.axis().scale(y).orient("left").ticks(5)
 
@@ -1565,11 +1454,12 @@ function init(){
   trends.append("g")
       .attr("class", "y_axis")
       .call(yAxis)
-      .style("font-size","12px")
+      .style("stroke","#373a3c")
+      .style("font-size","11px")
       .style("font-family","GT-America")
       .style("text-transform","uppercase")
       .style("fill","#373a3c")
-      .attr("stroke-width", 1);
+      .attr("stroke-width", 0.5);
 
 
 
@@ -1601,7 +1491,7 @@ function init(){
 
     .attr("cy", function (d) { return y(d.percentDisabled); })
 
-    .attr("r", 10)
+    .attr("r", 8)
 
     .attr("class","datapoint")
 
@@ -1941,8 +1831,8 @@ var where_on_stack = 1250; //num. initial nodes
 var brain_color = "blue"
 
     var svg = d3.select("#brain2").append("svg")
-          .attr("width", 1300)
-          .attr("height", 1000)
+          .attr("width", 700)
+          .attr("height", 710)
           .attr('style', "background-image: url(media/brain2.svg); background-repeat: no-repeat;")
           .attr("x",25)
           .attr("y",25);
@@ -2010,44 +1900,6 @@ var brain_color = "blue"
         .attr("height",330)
         .attr("fill","white")
         .attr("stroke","none");
-
-    //Start blurb
-    svg.append("text")
-       // .attr("id","brainPercent")
-       .attr("x", 750 + (300/2))
-       .attr("y", 5 + 210)
-       .attr("text-anchor","middle")
-       .style("fill","#373a3c")
-       .style("font-family","GT-America")
-       .style("text-transform","uppercase")
-       .style("font-weight","light")
-       .text("Children at this level of poverty have only")
-       .style("font-size","13px");
-
-
-    //The Percentage that we want to display
-    svg.append("text")
-       .attr("id","brainPercent")
-       .attr("x", 750 + (300/2))
-       .attr("y", 140 + 210)
-       .attr("text-anchor","middle")
-       .style("fill","red")
-       .style("font-family","GT-America")
-       .style("text-transform","uppercase")
-       .text("98%")
-       .style("font-size","175px");
-
-    //End blurb
-    svg.append("text")
-       // .attr("id","brainPercent")
-       .attr("x", 750 + (300/2))
-       .attr("y", 175 + 210)
-       .attr("text-anchor","middle")
-       .style("fill","#373a3c")
-       .style("font-family","GT-America")
-       .style("text-transform","uppercase")
-       .text("of the average mass of grey matter.")
-       .style("font-size","13px");
 
 
     var stackOn = new Array();
@@ -2260,7 +2112,9 @@ function init_SAT(){
 
   SATplot.append("g")
     .attr("class", "x axis")
-    .style("fill","black")
+    //.style("fill","#373a3c")
+    .style("stroke","#373a3c")
+    .style("stroke-width","0.5")
     .attr("transform", "translate(0," + height + ")")
     .call(xAxis)
     .selectAll("text")
@@ -2275,7 +2129,9 @@ function init_SAT(){
 
   SATplot.append("g")
     .attr("class", "y axis")
-    .style("fill","black")
+    //.style("fill","#373a3c")
+    .style("stroke","#373a3c")
+    .style("stroke-width","0.5")
     .attr("id","yaxis")
     .attr("transform", "translate(" + margin.left + ",0)")
     .transition()

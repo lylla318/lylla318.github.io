@@ -102,27 +102,6 @@ $(document).ready(function () {
     console.log(data);
   });
 
-  // $.ajax({
-  //   url: "http://elr37-dev.library.cornell.edu/qa/show/linked_data/dbpedia/Daz+Dillinger",
- 
-  //   // The name of the callback parameter, as specified by the YQL service
-  //   jsonp: "callback",
- 
-  //   // Tell jQuery we're expecting JSONP
-  //   dataType: "jsonp",
- 
-  //   // Tell YQL what we want and that we want JSON
-  //   data: {
-  //       q: "select title,abstract,url from search.news where query=\"cat\"",
-  //       format: "json"
-  //   },
- 
-  //   // Work with the response
-  //   success: function( response ) {
-  //       console.log( response ); // server response
-  //   }
-  // });
-
 });
 
 $(".chosen-select-genre").on("change",function(d){
@@ -169,7 +148,7 @@ function drawRadial(data) {
   var svg = d3.select("svg"),//.(zoomListener),
     width = 700,
     height = 600,
-    g = svg.append("g").attr("transform", "translate(" + (width - width / 3 ) + "," + (height - height / 4 ) + ")");
+    g = svg.append("g").attr("transform", "translate(" + (width - width / 3 ) + "," + (height - height / 3 ) + ")");
 
   svg.append("rect")
     .attr("id","head")
@@ -185,7 +164,7 @@ function drawRadial(data) {
     .parentId(function(d) { return d.id.substring(0, d.id.lastIndexOf(".")); });
 
   var tree = d3.tree()
-    .size([360, 340])
+    .size([360, 300])
     //.size([360, 200])
     .separation(function(a, b) { 
       return (a.parent == b.parent ? 1 : 2) / a.depth; });

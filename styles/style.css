@@ -384,7 +384,7 @@ ul.img-list li:hover span.text-content {
   font-family: MarkPro !important;
   font-weight: bold !important;
   font-size:25px !important;
-  width:80% !important;
+  width:100% !important;
 }
 
 
@@ -406,7 +406,7 @@ ul.img-list li:hover span.text-content {
 @media only screen and (max-width: 750px) {
 
   .blurb, .contact-me, .article-box {
-    width:85%;
+    width:85% !important;
     display:table;
     margin: 0 auto;
   }
@@ -446,6 +446,10 @@ ul.img-list li:hover span.text-content {
 
 @media only screen and (max-width: 450px) {
 
+  .blurb {
+    width:90% !important;
+  }
+
   .senseable_logo, .mit_logo {
     /*width: 270px; */
     height: 15px;
@@ -453,6 +457,10 @@ ul.img-list li:hover span.text-content {
 
   .header {
     width: 90%;
+  }
+
+  .article-box {
+    width:80%;  
   }
 }
 

@@ -28,9 +28,63 @@ a {
   float:left;
 }
 
-#caption {
+.console {
+  width:60%;
+  display:table;
+  margin:0 auto;
+  margin-top:5%;
   font-family: "BebasNeue" !important;
   letter-spacing: 2px;
+  text-align: center
+}
+
+.byline, .cornell-cis {
+  width:60%;
+  display:table;
+  margin:0 auto;
+  margin-top:1%;
+  font-family: "BebasNeue" !important;
+  font-size:12px;
+  letter-spacing: 2px;
+  font-style: italic;
+  text-align: center;
+}
+
+.slider-container, .percent-info, .subtitle {
+  width:60%;
+  display:table;
+  margin:0 auto;
+}
+
+.slider-container, .percent-info {
+  margin-top:2%;
+}
+
+
+
+.percent-info {
+  font-family: "GT-America";
+  font-size:12px;
+  font-weight: lighter;
+  color: #373a3c;
+  text-transform: uppercase;
+}
+
+.cornell-cis {
+  margin-bottom:5%;
+}
+
+.brain2 {
+
+}
+
+.context {
+  width:60%;
+  display:table;
+  margin:0 auto;
+  text-transform: uppercase;
+  font-size: 13px;
+  /*margin-bottom:5%;*/
 }
 
 #trendswrapper {
@@ -90,11 +144,6 @@ svg #layer1 #path8 {
 	margin-top: 10%;
 	margin-left: 20%;
 	z-index:-1;
-}
-
-.brain2 {
-  width:1000px;
-  height:700px;
 }
 
 .slider {
@@ -389,12 +438,6 @@ h2brain {
 
 }
 
-.context {
-  width: 80%;
-  text-transform: uppercase;
-  font-size: 13px;
-  margin-bottom:5%;
-}
 
 #hope text{
   fill: white;
