@@ -444,7 +444,7 @@ ul.img-list li:hover span.text-content {
 }
 
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 500px) {
 
   .blurb {
     width:90% !important;
@@ -460,7 +460,7 @@ ul.img-list li:hover span.text-content {
   }
 
   .article-box {
-    width:80%;  
+    width:90% !important;  
   }
 }
 
