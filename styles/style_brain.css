@@ -8,6 +8,11 @@
     src: url('fonts/BebasNeue-Bold.otf')
 }
 
+@font-face{
+    font-family: "Brela";
+    src: url('fonts/brelaregular.otf')
+}
+
 body {
     /*background: #18121E;*/
     background: white;
@@ -82,13 +87,16 @@ a {
   width:60%;
   display:table;
   margin:0 auto;
-  text-transform: uppercase;
-  font-size: 13px;
+  /*text-transform: uppercase;*/
+  /*font-size: 14px;*/
+  font-family:"Brela" !important;
   /*margin-bottom:5%;*/
 }
 
 .lower-context {
   margin-top:50%;
+  position: relative;
+  z-index: 99999;
 }
 
 #trendswrapper {
@@ -334,7 +342,7 @@ h4{
 
 .secondary-menus {
   width:100%;
-  margin-top: 0%;
+  margin-top: 4%;
   margin-left:0%;
   padding: 0%;
   z-index: 3;
@@ -455,6 +463,12 @@ h2brain {
 
 #SATscores{
   margin-left: 220px;
+}
+
+.sat-scores {
+  position: relative;
+  z-index:-9999;
+  margin-top:-50px;
 }
 
 .d3-slider-axis-bottom {
