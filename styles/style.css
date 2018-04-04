@@ -17,6 +17,14 @@
   font-family: GT-America;
   font-size:12px;
   margin-bottom:3%;
+  text-transform: uppercase;
+}
+
+.skill {
+  font-family: GT-America;
+  font-size:12px;
+  margin-bottom:3%;
+  text-transform: uppercase;
 }
 
 body {
