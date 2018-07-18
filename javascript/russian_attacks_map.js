@@ -144,6 +144,8 @@ d3.json("data/syria-districts-topojson.json", function(error, syr) {
                 latitude = parseFloat(dayData[k].location_latitude),
                 attackCoords = projection([longitude, latitude]);
 
+            console.log(attackCoords);
+
             var circle = svg.append("circle")
               .attr("class",".circ"+attackDay)
               .data([(Object.keys(attacksByDay))[attackDay]])
