@@ -13,6 +13,11 @@
     src: url('fonts/GT-America-Mono-Light-v1.otf')
 }
 
+@font-face{
+    font-family: "vcr";
+    src: url('fonts/vcr.ttf')
+}
+
 .tagline {
   font-family: GT-America;
   font-size:12px;
@@ -31,7 +36,7 @@ body {
 
   overflow-x:hidden;
 
-  font-family: vcr !important;
+  /*font-family: vcr !important;*/
 
     -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
        -moz-animation: fadein 2s; /* Firefox < 16 */
@@ -403,6 +408,11 @@ ul.img-list li:hover span.text-content {
   margin-top:3%;
 }
 
+.article-box span {
+  font-weight:  bold;
+  padding-bottom: 15px;
+}
+
 /*.box-ls {
   margin-top:3%;
 }
@@ -430,6 +440,12 @@ ul.img-list li:hover span.text-content {
     font-size: 14px;
    }
 
+   ul li {
+    font-size: 14px;
+   }
+
+
+
   .bottom .logo_area {
     padding-right:10px;
     left: -37px;
@@ -450,6 +466,10 @@ ul.img-list li:hover span.text-content {
   .article-box {
     margin-top: 30px !important;
     margin-bottom: 60px !important;
+  }
+
+  .article-box span {
+    font-size:  14px;
   }
   
 }
