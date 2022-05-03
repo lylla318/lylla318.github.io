@@ -18,19 +18,6 @@
     src: url('fonts/vcr.ttf')
 }
 
-.tagline {
-  font-family: GT-America;
-  font-size:12px;
-  margin-bottom:3%;
-  text-transform: uppercase;
-}
-
-.skill {
-  font-family: GT-America;
-  font-size:12px;
-  margin-bottom:3%;
-  text-transform: uppercase;
-}
 
 body {
 
@@ -74,24 +61,6 @@ body {
     to   { opacity: 1; }
 }
 
-#menuText {
-	font-size:10px;
-  font-weight:bold;
-}
-
-.name-box {
-  display:table;
-  margin: 0 auto;
-  margin-top: 5% !important;
-}
-
-h5 {
-	font-family:EffraLite !important;
-	font-weight:400 !important;
-	color:#C0C0C0 !important;
-	margin-left:3%;
-	font-size:15px !important;
-}
 a {
 	text-decoration: none !important;
 	color:#9370DB !important;
@@ -203,7 +172,7 @@ a:hover {
 }
 
 .blurb, .contact-me, .article-box {
-  width:50%;
+  width:70%;
   display:table;
   margin: 0 auto;
 }
@@ -223,6 +192,11 @@ a:hover {
   font-family: GT-America;
   font-size:14px !important;
   margin-top:5%;
+}
+
+.article-box h1 {
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .contact-me p {
@@ -259,167 +233,11 @@ a:hover {
 	margin-top: 3% !important;
 }
 
-#innerBox {
-	height:90%;
-	width:100%;
-	padding-top:10% !important;
-	padding-bottom:10%;
-	padding-right:10%;
-	padding-left:10%;
-	border:solid 1px #ddd !important;
-}
-#viewBox {
-	/*border: solid 1px black;*/
-	height:280px;
-}
-/*.fill {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden
-}
-.fill img {
-    flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%
-}*/
-
-#path {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: dash 15s linear forwards;
-}
-
-@keyframes dash {
-  /*from {
-    stroke-dashoffset: 1000;
-  }*/
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-
-img.Image {
-    max-width: 100%;
-    height: auto;
-    width: auto\9; /* ie8 */
-}
-
-/*img.Image { 
-  max-width: 100%; 
-  height: 316.25px; 
-  display: block; 
-  border: solid 1px #ddd;
-}*/
-
-/*div#ImageContainer { width: 100%; }*/
-
-#ImageContainer {
-  margin-top:2%;
-  max-width:650px;
-}
-
-
-ul.img-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
-
-ul.img-list li {
-  display: inline-block;
-  height: auto;
-  margin: 0 1em 1em 0;
-  position: relative;
-  width: 400px;
-}
-
-span.text-content {
-  
-  background: rgba(0,0,0,0.5);
-  color: white;
-  cursor: pointer;
-  display: table;
-  height: 316.25px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 400px;
-  opacity: 0;
-  -webkit-transition: opacity 500ms;
-  -moz-transition: opacity 500ms;
-  -o-transition: opacity 500ms;
-  transition: opacity 500ms;
-}
-
-
-span.text-content span {
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-}
-
-
-ul.img-list li:hover span.text-content {
-  opacity: 1;
-}
-
-
-.description_boxes {
-  margin-left:14%;
-  display:flex;
-  flex-direction:row;
-  flex-wrap:wrap;
-  margin-bottom:20px;
-}
-
-.description_box {
-  height: auto;
-  margin: 0 auto;
-  width: 40%;
-  margin-right: 0.25%;
-  margin-left: 0.25%;
-  font-family:MarkPro;
-  margin-top:20px;
-  padding-left: 1%;
-  padding-right: 1%;
-  padding-bottom: 3%;
-}
-
-.description_box h1, .article-box h1 {
-  font-family: MarkPro !important;
-  font-weight: bold !important;
-  font-size:18px !important;
-  width:100% !important;
-}
-
-
-.box-lg {
-  margin-top:3%;
-}
-
-.article-box span {
-  font-weight:  bold;
-  padding-bottom: 15px;
-}
-
-/*.box-ls {
-  margin-top:3%;
-}
-*/
-.description_box p {
-  width: 80% !important;
-}
-
-
-
 
 @media only screen and (max-width: 750px) {
 
   .blurb, .contact-me, .article-box {
-    width:85% !important;
+    width:90% !important;
     display:table;
     margin: 0 auto;
   }
@@ -435,7 +253,6 @@ ul.img-list li:hover span.text-content {
    ul li {
     font-size: 14px;
    }
-
 
 
   .bottom .logo_area {
@@ -469,10 +286,11 @@ ul.img-list li:hover span.text-content {
 
 @media only screen and (max-width: 500px) {
 
-  .blurb {
+  .blurb, .contact-me, .article-box {
     width:90% !important;
+    display:table;
+    margin: 0 auto;
   }
-
   .senseable_logo, .mit_logo {
     /*width: 270px; */
     height: 15px;
@@ -480,10 +298,6 @@ ul.img-list li:hover span.text-content {
 
   .header {
     width: 90%;
-  }
-
-  .article-box {
-    width:90% !important;  
   }
 }
 
