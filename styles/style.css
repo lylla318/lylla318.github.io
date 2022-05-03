@@ -14,6 +14,11 @@
 }
 
 @font-face{
+    font-family: "GT-America-bold";
+    src: url('fonts/GT-America-Mono-Bold-v1.otf')
+}
+
+@font-face{
     font-family: "vcr";
     src: url('fonts/vcr.ttf')
 }
@@ -102,7 +107,7 @@ a:hover {
     width: 100%;
     border: none;
     border-bottom: 1px solid #AAA;
-    top: -8px;
+    top: -15px;
     left: 0;
 
 
@@ -115,7 +120,7 @@ a:hover {
     width: 100%;
     border: none;
     border-bottom: 1px solid #AAA;
-    top: -8px;
+    top: -15px;
     left: 0;
 
 }
@@ -195,8 +200,10 @@ a:hover {
 }
 
 .article-box h1 {
-  font-size: 18px;
+  font-family: GT-America-bold;
+  font-size: 16px;
   font-weight: bold;
+  padding-bottom: 10px;
 }
 
 .contact-me p {
