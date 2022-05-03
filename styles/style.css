@@ -193,16 +193,9 @@ a:hover {
   margin-top:4% !important;
   margin-bottom:4% !important;
 }
-.poem-block img {
-    display : block;
-    margin : auto;
-    max-width: 40%;
-    height:auto;
-    margin-top:5%;
-    margin-bottom:5%;
-}
+
 .blurb {
-	font-family: MarkPro;
+	font-family: GT-America;
 	font-size:16px !important;
   text-align: justify;
   text-justify: inter-word;
@@ -228,8 +221,7 @@ a:hover {
 
 .article-box{
   font-family: GT-America;
-  font-size:12px !important;
-  font-size:18px !important;
+  font-size:14px !important;
   margin-top:5%;
 }
 
@@ -399,7 +391,7 @@ ul.img-list li:hover span.text-content {
 .description_box h1, .article-box h1 {
   font-family: MarkPro !important;
   font-weight: bold !important;
-  font-size:25px !important;
+  font-size:18px !important;
   width:100% !important;
 }
 
