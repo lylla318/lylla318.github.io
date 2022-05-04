@@ -240,6 +240,15 @@ a:hover {
 	margin-top: 3% !important;
 }
 
+.contact-icon {
+  width: 15px;
+  height: inherit;
+  padding-bottom: 3px;
+}
+
+.contact-icon {
+  display: inline-block;
+}
 
 @media only screen and (max-width: 750px) {
 
