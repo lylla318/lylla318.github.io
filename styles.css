@@ -1,0 +1,18 @@
+
+h1 {
+	font-family: Roboto;
+	font-weight: bold;
+	text-align: center;
+}
+
+.main-container {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.photo-item img {
+	width: 300px !important;
+
+}
